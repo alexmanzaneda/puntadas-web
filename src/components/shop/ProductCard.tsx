@@ -7,9 +7,9 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <div className="group flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white transition-all hover:shadow-md">
+    <div className="group flex flex-col overflow-hidden rounded-lg border border-stone-200 bg-white transition-all hover:shadow-md">
       {/* Contenedor de la imagen */}
-      <div className="relative aspect-square overflow-hidden bg-gray-100">
+      <div className="relative aspect-square overflow-hidden bg-stone-100">
         <Image
           src={product.imageUrl}
           alt={product.name}
@@ -21,12 +21,12 @@ export default function ProductCard({ product }: ProductCardProps) {
       
       {/* Información del producto */}
       <div className="flex flex-1 flex-col p-4">
-        <h3 className="text-lg font-semibold text-gray-900">{product.name}</h3>
-        <p className="mt-1 text-sm text-gray-500 line-clamp-2">{product.description}</p>
+        <h3 className="text-lg font-semibold text-stone-900">{product.name}</h3>
+        <p className="mt-1 text-sm text-stone-600 line-clamp-2">{product.description}</p>
         
         <div className="mt-auto pt-4 flex items-center justify-between">
-          <span className="text-lg font-bold text-gray-900">{product.price.toFixed(2)} €</span>
-          <button className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-800">
+          <span className="text-lg font-bold text-stone-900">{product.price.toFixed(2)} €</span>
+          <button className="rounded-md bg-stone-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-stone-800">
             Ver más
           </button>
         </div>

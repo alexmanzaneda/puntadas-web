@@ -7,7 +7,7 @@ export const products: Product[] = [
     description: 'Un bolso espacioso de cuero artesanal, ideal para llevar el portátil y tus básicos del día a día.',
     price: 125.00,
     imageUrl: '/images/BolsoMarron.png',
-    category: 'Tote',
+    category: 'Bolso',
     inStock: true,
   },
   {
@@ -16,7 +16,7 @@ export const products: Product[] = [
     description: 'Diseño compacto y elegante con correa ajustable. Perfecta para salir ligera.',
     price: 89.50,
     imageUrl: '/images/NeceserNavidad.png',
-    category: 'Bandolera',
+    category: 'Neceser',
     inStock: true,
   },
   {
@@ -25,7 +25,7 @@ export const products: Product[] = [
     description: 'Resistente, ligera y con múltiples compartimentos interiores.',
     price: 110.00,
     imageUrl: '/images/PuntadasLogo.png',
-    category: 'Mochila',
+    category: 'Accesorio',
     inStock: false,
   }
 ];
