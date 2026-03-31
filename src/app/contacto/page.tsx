@@ -1,10 +1,12 @@
+import Footer from '@/components/layout/Footer';
+
 export default function ContactoPage() {
   const whatsappUrl = 'https://wa.me/34600000000?text=Hola%20Puntadas%2C%20me%20interesa%20realizar%20un%20pedido';
 
   return (
-    <main className="bg-white">
-      {/* Hero Section */}
-      <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+    <>
+      <main className="bg-white">
+        <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
         <p className="text-xs tracking-[0.2em] text-zinc-600">CONTACTO</p>
         <h1 className="mt-3 text-4xl font-bold text-zinc-950">Diseñado para ti</h1>
         <p className="mt-6 text-lg text-zinc-800 leading-8">
@@ -139,6 +141,8 @@ export default function ContactoPage() {
           </div>
         </div>
       </section>
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }

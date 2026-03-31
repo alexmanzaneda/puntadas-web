@@ -13,9 +13,12 @@ const faqs = [
   },
 ];
 
+import Footer from '@/components/layout/Footer';
+
 export default function PreguntasFrecuentesPage() {
   return (
-    <main className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+    <>
+      <main className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
       <p className="text-xs tracking-[0.2em] text-stone-500">AYUDA</p>
       <h1 className="mt-3 text-4xl font-semibold text-stone-900">Preguntas frecuentes</h1>
       <div className="mt-10 space-y-8">
@@ -26,6 +29,8 @@ export default function PreguntasFrecuentesPage() {
           </article>
         ))}
       </div>
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }
