@@ -2,21 +2,21 @@ import { Product } from '@/types';
 
 export const products: Product[] = [
   {
-    id: 'bolso-tote-clasico',
-    name: 'Tote Clásico Piel',
-    description: 'Un bolso espacioso de cuero artesanal, ideal para llevar el portátil y tus básicos del día a día.',
-    price: 125.00,
-    imageUrl: '/images/BolsoMarron.png',
+    id: 'bolso-ganchillo-blanco',
+    name: 'Ganfi',
+    description: 'Ganchillo con hilo fino, forrado y asas de polipiel',
+    price: 50.00,
+    imageUrl: '/images/Bolsos/ganchillo_blanco.png',
     category: 'Bolso',
     inStock: true,
   },
   {
-    id: 'bandolera-mini-negra',
-    name: 'Bandolera Mini Noche',
-    description: 'Diseño compacto y elegante con correa ajustable. Perfecta para salir ligera.',
-    price: 89.50,
-    imageUrl: '/images/NeceserNavidad.png',
-    category: 'Neceser',
+    id: 'bolso-ganchillo-rosa',
+    name: 'Pink',
+    description: 'Bolso de ganchillo...',
+    price: 40.00,
+    imageUrl: '/images/Bolsos/ganchillo_rosa.png',
+    category: 'Bolso',
     inStock: true,
   },
   {

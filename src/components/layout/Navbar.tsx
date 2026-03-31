@@ -1,6 +1,18 @@
+"use client";
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+const navItems = [
+  { href: '/catalogue/bolsos', label: 'Bolsos' },
+  { href: '/catalogue/neceseres', label: 'Neceseres' },
+  { href: '/catalogue/correas-movil', label: 'Correas Movil' },
+  { href: '/catalogue/accesorios', label: 'Accesorios' },
+];
 
 export default function Navbar() {
+  const pathname = usePathname();
+
   return (
     <nav className="w-full border-b border-stone-200 bg-white py-4">
       <div className="container mx-auto px-4 flex justify-between items-center">
@@ -10,13 +22,24 @@ export default function Navbar() {
         </Link>
 
         {/* Enlaces de navegación */}
-        <div className="space-x-6 text-sm font-medium text-stone-600">
-          <Link href="/catalogue" className="hover:text-stone-900 transition-colors">
-            Catálogo
-          </Link>
-          <Link href="/nosotros" className="hover:text-stone-900 transition-colors">
-            La Marca
-          </Link>
+        <div className="flex items-center gap-5 text-sm font-medium text-stone-600">
+          {navItems.map((item) => {
+            const isActive = pathname === item.href;
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={
+                  isActive
+                    ? 'text-stone-900 underline underline-offset-4 transition-colors'
+                    : 'hover:text-stone-900 transition-colors'
+                }
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </nav>
