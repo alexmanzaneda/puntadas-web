@@ -8,9 +8,9 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="flex flex-col items-center md:items-start">
             <p className="max-w-xs text-3xl leading-tight tracking-wide text-white/95">
-              El sello de lo selecto,
+              Hecho a mano,
               <br />
-              el acierto de lo práctico
+              cuidando cada detalle
             </p>
 
             <div className="mt-8 flex items-center gap-6">

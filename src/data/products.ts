@@ -14,7 +14,7 @@ export const products: Product[] = [
   {
     id: 'bolso-ganchillo-rosa',
     name: 'Pink',
-    description: 'Bolso de ganchillo...',
+    description: 'Bolso de ganchillo en rosa suave con hilo fino, forrado interior y asas de polipiel beige',
     price: 40.00,
     images: ['/images/bolso/ganchillo_rosa.png'],
     category: 'Bolso',
@@ -24,7 +24,7 @@ export const products: Product[] = [
   {
     id: 'bolso-personalizado-letras',
     name: 'Bolso personalizado con iniciales',
-    description: 'Unico',
+    description: 'Bolso artesanal personalizable con tus iniciales o mensaje. Cada pieza es única y se elabora bajo demanda con cuidado especial',
     price: 60.00,
     images: ['/images/bolso/letras.png'],
     category: 'Bolso',
@@ -34,7 +34,7 @@ export const products: Product[] = [
   {
     id: 'neceser-cuadros',
     name: 'Neceser de cuadros',
-    description: 'Neceser de cuadros en distintos colores',
+    description: 'Neceser práctico con estampado de cuadros en tonos vibrantes, disponible en rosa y rojo. Forrado interior perfecto para viajes',
     price: 25.00,
     images: [
       '/images/neceser/cuadros_rosa.png',
@@ -46,7 +46,7 @@ export const products: Product[] = [
   {
     id: 'neceser-limones',
     name: 'Neceser estampado limones',
-    description: 'Neceser estilo veraniego',
+    description: 'Neceser estilo veraniego con adorable estampado de limones. Perfecto para organizar accesorios de viaje o diarios',
     price: 25.00,
     images: ['/images/neceser/limones.png'],
     category: 'Neceser',
@@ -130,9 +130,9 @@ export const products: Product[] = [
     inStock: true,
   },
   {
-    id: 'neceser grande',
+    id: 'neceser-grande',
     name: 'Neceser Grande',
-    description: 'Neceser multifuncional de gran tamaño',
+    description: 'Neceser multifuncional de gran tamaño con capacidad extra, ideal para guardar cosméticos y accesorios de viaje o uso diario',
     price: 30.00,
     images: ['/images/neceser/cuadros-grande_negro.png'],
     category: 'Neceser',

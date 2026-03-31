@@ -40,7 +40,7 @@ export default function Home() {
             PUNTADAS
           </h1>
           <p className="text-md sm:text-lg lg:text-xl text-white/90 max-w-2xl font-light mb-8 tracking-wide">
-            Bolsos artesanales de lujo. Cada pieza cuenta una historia.
+            Bolsos artesanales únicos. Cada pieza cuenta una historia.
           </p>
           <Link
             href="/catalogue/bolsos"
