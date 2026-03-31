@@ -1,4 +1,5 @@
 import ProductCard from '@/components/shop/ProductCard';
+import Footer from '@/components/layout/Footer';
 import { products } from '@/data/products';
 import type { ProductCategory } from '@/types';
 
@@ -16,7 +17,8 @@ export default function CategoryPage({
   const categoryProducts = products.filter((product) => product.category === category);
 
   return (
-    <main className="mx-auto max-w-7xl px-4 pb-20 pt-10 sm:px-6 lg:px-8">
+    <>
+      <main className="mx-auto max-w-7xl px-4 pb-20 pt-10 sm:px-6 lg:px-8">
       <header className="border-b border-stone-200 pb-8">
         <p className="text-xs tracking-[0.2em] text-stone-500">PUNTADAS STUDIO</p>
         <h1 className="mt-3 text-3xl font-semibold tracking-[0.08em] text-stone-900 sm:text-4xl">
@@ -38,6 +40,8 @@ export default function CategoryPage({
           </p>
         )}
       </section>
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }

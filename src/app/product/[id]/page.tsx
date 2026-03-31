@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import Footer from '@/components/layout/Footer';
 import { products } from '@/data/products';
 
 interface ProductPageProps {
@@ -18,7 +19,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-white">
+    <>
+      <main className="min-h-screen bg-white">
       {/* Breadcrumb */}
       <nav className="border-b border-stone-200 px-4 py-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-sm text-stone-600">
@@ -145,6 +147,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
         </div>
       </section>
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }
