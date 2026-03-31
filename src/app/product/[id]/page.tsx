@@ -87,16 +87,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
             {/* CTA Buttons */}
             <div className="flex gap-4 mb-8">
-              <button
-                disabled={!product.inStock}
-                className={`flex-1 px-6 py-3 rounded-md font-medium transition-colors ${
-                  product.inStock
-                    ? 'bg-stone-900 text-white hover:bg-stone-800'
-                    : 'bg-stone-200 text-stone-400 cursor-not-allowed'
-                }`}
+              <Link
+                href="/contacto"
+                className="flex-1 px-6 py-3 rounded-md bg-stone-900 text-white font-medium hover:bg-stone-800 transition-colors text-center"
               >
-                {product.inStock ? 'Añadir al carrito' : 'Agotado'}
-              </button>
+                Solicitar información
+              </Link>
               <button className="px-6 py-3 rounded-md border border-stone-900 text-stone-900 font-medium hover:bg-stone-50 transition-colors">
                 Compartir
               </button>
@@ -105,13 +101,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
             {/* Info adicional */}
             <div className="space-y-4 pt-8 border-t border-stone-200">
               <div className="flex justify-between">
-                <span className="text-stone-600">ID del producto:</span>
-                <span className="font-medium text-stone-900">{product.id}</span>
-              </div>
-              <div className="flex justify-between">
                 <span className="text-stone-600">Envío:</span>
-                <span className="font-medium text-stone-900">Normalmente en 2-3 días</span>
+                <span className="font-medium text-stone-900">Normalmente en 2-3 días *</span>
               </div>
+              <p className="text-xs text-stone-500 mt-4">* Previa confirmación de disponibilidad y contacto personalizado</p>
             </div>
           </div>
         </div>
