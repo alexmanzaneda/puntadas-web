@@ -4,10 +4,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const navItems = [
-  { href: '/catalogue/bolsos', label: 'Bolsos' },
-  { href: '/catalogue/neceseres', label: 'Neceseres' },
-  { href: '/catalogue/correas-movil', label: 'Correas Movil' },
-  { href: '/catalogue/accesorios', label: 'Accesorios' },
+  { href: '/catalogue/bolsos', label: 'BOLSOS' },
+  { href: '/catalogue/neceseres', label: 'NECESERES' },
+  { href: '/catalogue/correas-movil', label: 'CORREAS MOVIL' },
+  { href: '/catalogue/accesorios', label: 'ACCESORIOS' },
 ];
 
 export default function Navbar() {
@@ -22,7 +22,7 @@ export default function Navbar() {
         </Link>
 
         {/* Enlaces de navegación */}
-        <div className="flex items-center gap-5 text-sm font-medium text-stone-600">
+        <div className="flex items-center gap-8 text-sm font-medium text-stone-600">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
 
@@ -32,8 +32,8 @@ export default function Navbar() {
                 href={item.href}
                 className={
                   isActive
-                    ? 'text-stone-900 underline underline-offset-4 transition-colors'
-                    : 'hover:text-stone-900 transition-colors'
+                    ? 'font-bold text-stone-900 underline underline-offset-4 transition-all'
+                    : 'hover:underline hover:underline-offset-4 transition-all'
                 }
               >
                 {item.label}

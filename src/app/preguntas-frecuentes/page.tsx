@@ -1,15 +1,27 @@
 const faqs = [
   {
-    question: 'Cuanto tarda el envio?',
-    answer: 'El tiempo estimado de envio es de 2 a 5 dias laborables en peninsula.',
+    question: '¿Cuánto tarda mi pedido?',
+    answer: 'Cada producto se confecciona desde cero, comenzando desde la tela. El tiempo mínimo es de una semana, aunque puede variar según la complejidad del diseño y personalizaciones solicitadas. Después del envío, la entrega en península es de 2 a 5 días laborales.',
+  },
+  {
+    question: '¿Cómo es el proceso de confección?',
+    answer: 'Seleccionamos y preparamos la tela, cortamos las piezas, cosemos, forramos, agregamos detalles y finalizamos manualmente cada producto. Todo es hecho a mano con atención al detalle. No hacemos producción en masa, cada pieza es única.',
   },
   {
     question: 'Puedo cambiar un producto?',
-    answer: 'Si, aceptamos cambios dentro de los 14 dias posteriores a la entrega.',
+    answer: 'Sí, aceptamos cambios dentro de los 14 días posteriores a la entrega. Contáctanos por WhatsApp para coordinar el proceso.',
   },
   {
-    question: 'Los productos son artesanales?',
-    answer: 'Si. Cada pieza se revisa y finaliza de forma manual antes del envio.',
+    question: '¿Los productos son artesanales?',
+    answer: '100% sí. Cada pieza se confecciona desde la tela, se revisa y finaliza de forma manual. No hay dos productos idénticos; cada uno tiene su propia personalidad.',
+  },
+  {
+    question: '¿Puedo personalizar un producto?',
+    answer: 'Por supuesto. Puedes solicitar cambios en colores, materiales, tamaño, agregar iniciales, mensajes o cualquier detalle especial. Discutimos tu idea con nosotros por WhatsApp y te presentamos opciones.',
+  },
+  {
+    question: '¿Qué métodos de pago aceptan?',
+    answer: 'Aceptamos transferencia bancaria, Bizum y PayPal. Coordinaremos el método que más te convenga una vez confirmado tu pedido.',
   },
 ];
 

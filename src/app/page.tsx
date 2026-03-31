@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { products } from '@/data/products';
 import ProductCard from '@/components/shop/ProductCard';
 import Footer from '@/components/layout/Footer';
+import { palette } from '@/lib/palette';
 import type { ProductCategory } from '@/types';
 
 const categories: ProductCategory[] = ['Bolso', 'Neceser', 'Correa', 'Accesorio'];
@@ -36,18 +37,12 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/30" />
 
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-4">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-white tracking-tight mb-4">
             PUNTADAS
           </h1>
-          <p className="text-md sm:text-lg lg:text-xl text-white/90 max-w-2xl font-light mb-8 tracking-wide">
+          <p className="text-lg sm:text-xl lg:text-2xl text-white/90 max-w-4xl font-light mb-8 tracking-wide">
             Bolsos artesanales únicos. Cada pieza cuenta una historia.
           </p>
-          <Link
-            href="/catalogue/bolsos"
-            className="inline-block bg-stone-900 hover:bg-stone-800 text-white px-8 py-3 rounded-sm font-medium tracking-wider transition-colors"
-          >
-            EXPLORAR COLECCION
-          </Link>
         </div>
       </section>
 
@@ -63,14 +58,14 @@ export default function Home() {
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <div className="flex items-end justify-between mb-8">
                   <div>
-                    <p className="text-xs tracking-[0.2em] text-stone-500 mb-2">COLECCIÓN</p>
-                    <h2 className="text-3xl sm:text-4xl font-semibold text-stone-900 tracking-wide">
+                    <p className={`text-xs tracking-[0.2em] ${palette.secondaryText} mb-2 opacity-60`}>COLECCIÓN</p>
+                    <h2 className={`text-3xl sm:text-4xl font-semibold ${palette.secondaryText} tracking-wide`}>
                       {categoryLabels[category]}
                     </h2>
                   </div>
                   <Link
                     href={categoryRoutes[category]}
-                    className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors"
+                    className={`text-sm font-medium ${palette.primaryText} hover:text-emerald-900 transition-colors`}
                   >
                     Ver {categoryLabels[category].toLowerCase()} →
                   </Link>
