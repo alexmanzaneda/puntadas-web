@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
-// Asegúrate de importar la fuente que uses (por defecto suele ser Inter)
-import { Inter } from "next/font/google"; 
+import { Poppins, Playfair_Display } from "next/font/google"; 
 import "./globals.css";
 
-// Importamos nuestro componente nuevo
 import Navbar from "@/components/layout/Navbar"; 
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({ 
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const playfair = Playfair_Display({ 
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-playfair",
+});
 
 export const metadata: Metadata = {
   title: "Puntadas | Bolsos Artesanales",
@@ -20,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${inter.className} bg-white`}>
+      <body className={`${poppins.className} ${playfair.variable} bg-white`}>
         {/* Aquí va la Navbar para que se vea siempre */}
         <Navbar />
         

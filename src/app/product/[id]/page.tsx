@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { products } from '@/data/products';
+import { getCategoryRoute } from '@/lib/categories';
+import ImageGallery from '@/components/shop/ImageGallery';
 
 interface ProductPageProps {
   params: Promise<{
@@ -26,7 +28,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             Inicio
           </Link>
           <span className="mx-2">/</span>
-          <Link href={`/catalogue/${product.category.toLowerCase().replace(/\s+/g, '-')}`} className="hover:text-stone-900">
+          <Link href={getCategoryRoute(product.category)} className="hover:text-stone-900">
             {product.category}
           </Link>
           <span className="mx-2">/</span>
@@ -37,19 +39,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
       {/* Contenedор principal */}
       <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
-          {/* Imagen del producto */}
-          <div className="flex items-center justify-center bg-stone-50 rounded-lg overflow-hidden h-96 md:h-auto md:aspect-square">
-            <div className="relative w-full h-full">
-              <Image
-                src={product.imageUrl}
-                alt={product.name}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
-              />
-            </div>
-          </div>
+          {/* Galería de imágenes del producto */}
+          <ImageGallery images={product.images} alt={product.name} />
 
           {/* Información del producto */}
           <div className="flex flex-col justify-start">
@@ -126,7 +117,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 >
                   <div className="relative aspect-square overflow-hidden bg-stone-100">
                     <Image
-                      src={relatedProduct.imageUrl}
+                      src={relatedProduct.images[0]}
                       alt={relatedProduct.name}
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"

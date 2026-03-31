@@ -1,15 +1,18 @@
 export type ProductCategory =
   | 'Bolso'
   | 'Neceser'
-  | 'Correa smartphone'
+  | 'Correa'
   | 'Accesorio';
+
+export type BolsoType = 'Ganchillo' | 'Letras' | 'Denim';
 
 export interface Product {
   id: string;
   name: string;
   description: string;
   price: number;
-  imageUrl: string; // Aquí pondremos la ruta de la foto
+  images: string[]; // Array de imágenes del producto
   category: ProductCategory;
+  type?: BolsoType; // Solo para bolsos
   inStock: boolean;
 }

@@ -1,6 +1,10 @@
+'use client';
+
+import { useState } from 'react';
 import ProductCard from '@/components/shop/ProductCard';
+import FilterButtons from '@/components/shop/FilterButtons';
 import { products } from '@/data/products';
-import type { ProductCategory } from '@/types';
+import type { ProductCategory, BolsoType } from '@/types';
 
 interface CategoryPageProps {
   category: ProductCategory;
@@ -13,7 +17,19 @@ export default function CategoryPage({
   title,
   subtitle,
 }: CategoryPageProps) {
+  const [selectedFilter, setSelectedFilter] = useState<BolsoType | null>(null);
+
   const categoryProducts = products.filter((product) => product.category === category);
+
+  // Obtener filtros únicos disponibles para esta categoría
+  const availableFilters = Array.from(
+    new Set(categoryProducts.filter((p) => p.type).map((p) => p.type))
+  ) as BolsoType[];
+
+  // Filtrar productos según la selección
+  const filteredProducts = selectedFilter
+    ? categoryProducts.filter((p) => p.type === selectedFilter)
+    : categoryProducts;
 
   return (
     <main className="mx-auto max-w-7xl px-4 pb-20 pt-10 sm:px-6 lg:px-8">
@@ -25,16 +41,27 @@ export default function CategoryPage({
         <p className="mt-4 max-w-2xl text-sm text-stone-600 sm:text-base">{subtitle}</p>
       </header>
 
+      {/* Filtros (solo si hay más de un tipo disponible) */}
+      {availableFilters.length > 0 && (
+        <FilterButtons
+          filters={availableFilters}
+          selectedFilter={selectedFilter}
+          onFilterChange={setSelectedFilter}
+        />
+      )}
+
       <section className="pt-10">
-        {categoryProducts.length > 0 ? (
+        {filteredProducts.length > 0 ? (
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {categoryProducts.map((product) => (
+            {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
         ) : (
           <p className="border border-dashed border-stone-300 px-4 py-6 text-sm text-stone-600">
-            Proximamente nuevos modelos en esta categoria.
+            {selectedFilter
+              ? `No hay productos de tipo "${selectedFilter}" en esta categoría.`
+              : 'Proximamente nuevos modelos en esta categoria.'}
           </p>
         )}
       </section>

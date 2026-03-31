@@ -13,7 +13,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         {/* Contenedor de la imagen */}
         <div className="relative aspect-square overflow-hidden bg-stone-100">
           <Image
-            src={product.imageUrl}
+            src={product.images[0]}
             alt={product.name}
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-110"

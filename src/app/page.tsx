@@ -4,19 +4,19 @@ import { products } from '@/data/products';
 import ProductCard from '@/components/shop/ProductCard';
 import type { ProductCategory } from '@/types';
 
-const categories: ProductCategory[] = ['Bolso', 'Neceser', 'Correa smartphone', 'Accesorio'];
+const categories: ProductCategory[] = ['Bolso', 'Neceser', 'Correa', 'Accesorio'];
 
 const categoryLabels: Record<ProductCategory, string> = {
   Bolso: 'BOLSOS',
   Neceser: 'NECESERES',
-  'Correa smartphone': 'CORREAS PARA MOVIL',
+  Correa: 'CORREAS',
   Accesorio: 'ACCESORIOS',
 };
 
 const categoryRoutes: Record<ProductCategory, string> = {
   Bolso: '/catalogue/bolsos',
   Neceser: '/catalogue/neceseres',
-  'Correa smartphone': '/catalogue/correas-movil',
+  Correa: '/catalogue/correas-movil',
   Accesorio: '/catalogue/accesorios',
 };
 

@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Usar Playfair Display para títulos */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-playfair), serif;
+  }
+
+  /* Opcional: hacer los títulos un poco más espaciados */
+  h1 {
+    line-height: 1.2;
+  }
+}
