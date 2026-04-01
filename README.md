@@ -1,64 +1,44 @@
 # Puntadas 👜
 
-Tienda online de bolsos artesanales. Proyecto construido desde cero con Next.js, TypeScript y Tailwind CSS.
+Artisanal handbag e-commerce. A handcrafted digital experience built with Next.js, TypeScript, and Tailwind CSS.
 
-## 🚀 Stack tecnológico
+## 🚀 Tech Stack
 
-| Tecnología | Versión | Uso |
+| Technology | Version | Purpose |
 |---|---|---|
-| [Next.js](https://nextjs.org/) | 15 (App Router) | Framework principal |
-| [React](https://react.dev/) | 19 | UI |
-| [TypeScript](https://www.typescriptlang.org/) | 5 | Tipado estático |
-| [Tailwind CSS](https://tailwindcss.com/) | 3 | Estilos |
+| [Next.js](https://nextjs.org/) | 15 (App Router) | Frontend framework |
+| [React](https://react.dev/) | 19 | UI library |
+| [TypeScript](https://www.typescriptlang.org/) | 5 | Static typing |
+| [Tailwind CSS](https://tailwindcss.com/) | 3.4 | Styling |
 
-## 📂 Estructura del proyecto
+## 📂 Project Structure
 
 ```
 src/
-├── app/                  # Rutas y layouts (Next.js App Router)
-│   ├── layout.tsx        # Layout raíz (Navbar, fuentes, metadata)
-│   ├── page.tsx          # Página de inicio
-│   └── catalogue/        # Ruta /catalogue
+├── app/                  # Routes and layouts (Next.js App Router)
+│   ├── layout.tsx        # Root layout (Navbar, fonts, metadata)
+│   ├── page.tsx          # Homepage
+│   ├── catalogue/        # Category routes (/catalogue/[category])
+│   ├── product/          # Product detail page (/product/[id])
+│   └── [pages]/          # Info pages (contact, FAQs, policies...)
 ├── components/
-│   ├── layout/           # Navbar, Footer
-│   ├── shop/             # Componentes de tienda (tarjetas, grids...)
-│   └── ui/               # Componentes base reutilizables (Button, Badge...)
+│   ├── layout/           # Navbar, Footer (reusable)
+│   ├── shop/             # Shop components (cards, galleries, filters)
+│   └── ui/               # Base UI components (Button, Badge, Image...)
 ├── data/
-│   └── products.ts       # Catálogo de productos (mock data)
+│   └── products.ts       # Product catalog
 ├── types/
-│   └── index.ts          # Interfaces TypeScript
+│   └── index.ts          # TypeScript interfaces
 └── lib/
-    ├── constants.ts      # Constantes globales
-    └── utils.ts          # Funciones de utilidad
+    ├── palette.ts        # Centralized color palette
+    ├── constants.ts      # Global constants
+    └── utils.ts          # Utility functions
 ```
 
-## 🛠️ Instalación
+## 👥 Authors
 
-Requisitos previos: [Node.js](https://nodejs.org/) (v18 o superior).
+- **Alex Manzaneda**  -  [![GitHub Profile](https://img.shields.io/badge/-@alexmanzaneda-black?style=flat-square&logo=github)](https://github.com/alexmanzaneda)
 
-1. **Clona el repositorio**:
-   ```bash
-   git clone https://github.com/your-username/puntadas-web.git
-   cd puntadas-web
-   ```
+- **Sara Vidal**  -  [![GitHub Profile](https://img.shields.io/badge/-@saravigon-black?style=flat-square&logo=github)](https://github.com/saravigon)
 
-2. **Instala las dependencias**:
-   ```bash
-   npm install
-   ```
 
-3. **Arranca el servidor de desarrollo**:
-   ```bash
-   npm run dev
-   ```
-
-4. Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
-
-## 📦 Scripts disponibles
-
-| Comando | Descripción |
-|---|---|
-| `npm run dev` | Servidor de desarrollo con hot-reload |
-| `npm run build` | Compilación para producción |
-| `npm run start` | Servidor de producción (requiere build previo) |
-| `npm run lint` | Análisis estático del código |
