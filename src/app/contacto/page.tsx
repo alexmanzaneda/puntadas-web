@@ -2,7 +2,7 @@ import Footer from '@/components/layout/Footer';
 import { palette } from '@/lib/palette';
 
 export default function ContactoPage() {
-  const whatsappUrl = 'https://wa.me/34600000000?text=Hola%20Puntadas%2C%20me%20interesa%20realizar%20un%20pedido';
+  const whatsappUrl = 'https://wa.me/34630550136?text=Hola%20Puntadas%2C%20me%20interesa%20realizar%20un%20pedido';
 
   return (
     <>
@@ -59,7 +59,7 @@ export default function ContactoPage() {
           <div className="p-6 border border-stone-200 rounded-lg">
             <h3 className="text-lg font-semibold text-stone-950 mb-2">WhatsApp (Recomendado)</h3>
             <p className="text-sm text-stone-600 mb-4">La forma más rápida y personal de hacer tu pedido</p>
-            <p className="text-2xl font-bold text-stone-950 mb-4">+34 600 000 000</p>
+            <p className="text-2xl font-bold text-stone-950 mb-4">+34 630 55 01 36</p>
             <a
               href={whatsappUrl}
               target="_blank"
