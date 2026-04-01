@@ -1,2 +1,33 @@
+# Dependencies
 node_modules
+.pnp
+.pnp.js
+
+# Testing
+coverage
+
+# Next.js
 .next
+out
+build
+
+# Development
+.env.local
+.env.*.local
+
+# Production
+.env.production.local
+
+# Misc
+.DS_Store
+*.log
+*.pem
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+Thumbs.db
