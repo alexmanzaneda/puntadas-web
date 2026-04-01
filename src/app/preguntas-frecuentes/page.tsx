@@ -8,8 +8,8 @@ const faqs = [
     answer: 'Seleccionamos y preparamos la tela, cortamos las piezas, cosemos, forramos, agregamos detalles y finalizamos manualmente cada producto. Todo es hecho a mano con atención al detalle. No hacemos producción en masa, cada pieza es única.',
   },
   {
-    question: 'Puedo cambiar un producto?',
-    answer: 'Sí, aceptamos cambios dentro de los 14 días posteriores a la entrega. Contáctanos por WhatsApp para coordinar el proceso.',
+    question: '¿Qué pasa si no me gusta el producto o tiene defectos?',
+    answer: 'Como todos nuestros productos son personalizados y confeccionados específicamente para ti, no aceptamos devoluciones en general. Sin embargo, si identificas algún defecto de fabricación, material inadecuado o inconveniente, contáctanos inmediatamente por WhatsApp con fotos. Evaluaremos cada caso individually y buscaremos la mejor solución.',
   },
   {
     question: '¿Los productos son artesanales?',
@@ -22,6 +22,10 @@ const faqs = [
   {
     question: '¿Qué métodos de pago aceptan?',
     answer: 'Aceptamos transferencia bancaria, Bizum y PayPal. Coordinaremos el método que más te convenga una vez confirmado tu pedido.',
+  },
+  {
+    question: '¿Hay tiempo límite para reportar un problema?',
+    answer: 'Sí, por favor contacta dentro de las 48 horas desde la recepción del producto si identificas algún defecto o inconveniente. Envía fotos detalladas y te responderemos con una solución.',
   },
 ];
 
