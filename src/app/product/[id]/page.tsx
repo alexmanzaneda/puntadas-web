@@ -54,11 +54,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <h1 className="text-4xl font-bold text-stone-900">{product.name}</h1>
             </div>
 
-            {/* Precio */}
-            <div className="text-3xl font-bold text-stone-900 mb-6">
-              {product.price.toFixed(2)} €
-            </div>
-
             {/* Disponibilidad */}
             <div className="mb-6">
               {product.inStock ? (
@@ -93,11 +88,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
             {/* Info adicional */}
             <div className="space-y-4 pt-8 border-t border-stone-200">
-              <div className="flex justify-between">
-                <span className="text-stone-600">Envío:</span>
-                <span className="font-medium text-stone-900">Normalmente en 2-3 días *</span>
-              </div>
-              <p className="text-xs text-stone-500 mt-4">* Previa confirmación de disponibilidad y contacto personalizado</p>
+              <p className="text-sm text-stone-600">Contáctanos para conocer más detalles y realizar tu pedido personalizado</p>
             </div>
           </div>
         </div>
@@ -129,9 +120,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   <div className="flex flex-1 flex-col p-4">
                     <h3 className="text-lg font-semibold text-stone-900">{relatedProduct.name}</h3>
                     <p className="mt-1 text-sm text-stone-600 line-clamp-2">{relatedProduct.description}</p>
-                    <div className="mt-auto pt-4">
-                      <span className="text-lg font-bold text-stone-900">{relatedProduct.price.toFixed(2)} €</span>
-                    </div>
                   </div>
                 </Link>
               ))}

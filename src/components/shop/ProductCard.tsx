@@ -27,7 +27,6 @@ export default function ProductCard({ product }: ProductCardProps) {
           <p className="mt-1 text-sm text-stone-600 line-clamp-2">{product.description}</p>
           
           <div className="mt-auto pt-4 flex items-center justify-between">
-            <span className="text-lg font-bold text-stone-900">{product.price.toFixed(2)} €</span>
             {!product.inStock && (
               <span className="text-xs font-medium text-stone-500 bg-stone-100 px-2 py-1 rounded">
                 Agotado
