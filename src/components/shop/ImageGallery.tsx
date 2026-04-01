@@ -26,7 +26,7 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
   return (
     <div>
       {/* Imagen principal */}
-      <div className="flex items-center justify-center bg-stone-50 rounded-lg overflow-hidden h-96 md:h-auto md:aspect-square relative group">
+      <div className="flex items-center justify-center bg-stone-50 rounded-lg overflow-hidden h-64 sm:h-96 md:h-auto md:aspect-square relative group">
         <div className="relative w-full h-full">
           <Image
             key={`image-${currentImageIndex}`}

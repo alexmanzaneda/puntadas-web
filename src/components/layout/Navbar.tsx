@@ -14,15 +14,15 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="w-full border-b border-stone-200 bg-white py-4">
+    <nav className="w-full border-b border-stone-200 bg-white py-3 sm:py-4">
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo / Nombre de la marca */}
-        <Link href="/" className="text-2xl font-bold text-stone-900 tracking-tighter">
+        <Link href="/" className="text-lg sm:text-2xl font-bold text-stone-900 tracking-tighter">
           PUNTADAS.
         </Link>
 
         {/* Enlaces de navegación */}
-        <div className="flex items-center gap-8 text-sm font-medium text-stone-600">
+        <div className="flex items-center gap-3 sm:gap-8 text-xs sm:text-sm font-medium text-stone-600">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
 
