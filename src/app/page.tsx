@@ -41,7 +41,7 @@ export default function Home() {
             PUNTADAS
           </h1>
           <p className="text-lg sm:text-xl lg:text-2xl text-white/90 max-w-4xl font-light mb-8 tracking-wide">
-            Bolsos artesanales únicos. Cada pieza cuenta una historia.
+            Bolsos y accesorios artesanales. Cada pieza cuenta una historia.
           </p>
         </div>
       </section>
