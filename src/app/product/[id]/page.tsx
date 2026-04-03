@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import Footer from '@/components/layout/Footer';
+import ShareButton from '@/components/shop/ShareButton';
 import { products } from '@/data/products';
 import { getCategoryRoute } from '@/lib/categories';
 import ImageGallery from '@/components/shop/ImageGallery';
@@ -81,9 +82,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               >
                 Solicitar información
               </Link>
-              <button className="px-6 py-3 rounded-md border border-stone-900 text-stone-900 font-medium hover:bg-stone-50 transition-colors">
-                Compartir
-              </button>
+              <ShareButton productName={product.name} productId={product.id} />
             </div>
 
             {/* Info adicional */}
