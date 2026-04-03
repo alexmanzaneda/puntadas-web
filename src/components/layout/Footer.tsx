@@ -3,17 +3,17 @@ import Link from 'next/link';
 export default function Footer() {
   return (
     <footer className="bg-zinc-950 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-8">
-          {/* Brand Section */}
-          <div className="flex flex-col items-center md:items-start">
-            <p className="max-w-xs text-3xl leading-tight tracking-wide text-white/95">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-3 md:gap-8">
+          {/* Brand Section - Left Column (Mobile) */}
+          <div className="col-span-1 flex flex-col items-center justify-between md:items-start">
+            <p className="max-w-xs text-xl sm:text-3xl leading-tight tracking-wide text-white/95 text-center md:text-left">
               Hecho a mano,
               <br />
               cuidando cada detalle
             </p>
 
-            <div className="mt-8 flex items-center gap-6">
+            <div className="mt-6 sm:mt-8 flex items-center gap-6">
               <a
                 href="https://www.instagram.com/puntadas_pc/"
                 target="_blank"
@@ -37,10 +37,10 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Customer Service */}
-          <div className="flex flex-col items-center">
-            <h3 className="text-2xl font-semibold tracking-tight">Atención al cliente</h3>
-            <ul className="mt-5 space-y-3 text-lg text-white/85">
+          {/* Customer Service - Right Column Mobile / Center Desktop */}
+          <div className="col-span-1 md:col-span-1 flex flex-col items-center">
+            <h3 className="text-lg sm:text-2xl font-semibold tracking-tight">Atención al cliente</h3>
+            <ul className="mt-3 sm:mt-5 space-y-2 sm:space-y-3 text-sm sm:text-lg text-white/85">
               <li>
                 <Link href="/nosotros" className="transition-colors hover:text-white">
                   La marca
@@ -64,10 +64,10 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Legal */}
-          <div className="flex flex-col items-center md:items-end">
-            <h3 className="text-2xl font-semibold tracking-tight">Información Legal</h3>
-            <ul className="mt-5 space-y-3 text-lg text-white/85">
+          {/* Legal - Right Column Desktop */}
+          <div className="col-span-2 md:col-span-1 flex flex-col items-center md:items-end">
+            <h3 className="text-lg sm:text-2xl font-semibold tracking-tight">Información Legal</h3>
+            <ul className="mt-3 sm:mt-5 space-y-2 sm:space-y-3 text-sm sm:text-lg text-white/85">
               <li>
                 <Link href="/politica-privacidad" className="transition-colors hover:text-white">
                   Política de Privacidad
@@ -83,8 +83,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom divider and copyright */}
-        <div className="mt-12 pt-8 border-t border-white/10">
-          <p className="text-center text-sm text-white/60">
+        <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-white/10">
+          <p className="text-center text-xs sm:text-sm text-white/60">
             © {new Date().getFullYear()} Puntadas. Todos los derechos reservados.
           </p>
         </div>
