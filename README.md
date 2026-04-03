@@ -14,10 +14,9 @@ Discover our collection of handmade bags, unique designs, and artisanal craftsma
 
 ## Screenshots
 
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
-  <img src="public/images/screenshots/puntadas_home.png" alt="Puntadas Homepage" style="border-radius: 8px;">
-  <img src="public/images/screenshots/puntadas_bolsos.png" alt="Puntadas Catalog" style="border-radius: 8px;">
-</div>
+| | |
+|---|---|
+| ![Puntadas Homepage](public/images/screenshots/puntadas_home.png) | ![Puntadas Catalog](public/images/screenshots/puntadas_bolsos.png) |
 
 ---
 
