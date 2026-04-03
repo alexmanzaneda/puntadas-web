@@ -1,0 +1,14 @@
+# Puntadas - robots.txt
+# Guide for search engine crawlers
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /.next
+Disallow: /node_modules
+
+# Sitemaps
+Sitemap: https://puntadasbcn.com/sitemap.xml
+
+# Crawl delay (optional, helps reduce server load)
+Crawl-delay: 1
