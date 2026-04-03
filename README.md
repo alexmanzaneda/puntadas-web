@@ -1,8 +1,27 @@
-# Puntadas 👜
+# Puntadas
 
 Artisanal handbag e-commerce. A handcrafted digital experience built with Next.js, TypeScript, and Tailwind CSS.
 
-## 🚀 Tech Stack
+---
+
+## Visit the Website
+
+### **[puntadasbcn.com](https://puntadasbcn.com)**
+
+Discover our collection of handmade bags, unique designs, and artisanal craftsmanship.
+
+---
+
+## Screenshots
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+  <img src="public/images/screenshots/puntadas_home.png" alt="Puntadas Homepage" style="border-radius: 8px;">
+  <img src="public/images/screenshots/puntadas_bolsos.png" alt="Puntadas Catalog" style="border-radius: 8px;">
+</div>
+
+---
+
+## Tech Stack
 
 | Technology | Version | Purpose |
 |---|---|---|
@@ -11,7 +30,7 @@ Artisanal handbag e-commerce. A handcrafted digital experience built with Next.j
 | [TypeScript](https://www.typescriptlang.org/) | 5 | Static typing |
 | [Tailwind CSS](https://tailwindcss.com/) | 3.4 | Styling |
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 src/
@@ -35,10 +54,14 @@ src/
     └── utils.ts          # Utility functions
 ```
 
-## 👥 Authors
 
-- **Alex Manzaneda**  -  [![GitHub Profile](https://img.shields.io/badge/-@alexmanzaneda-black?style=flat-square&logo=github)](https://github.com/alexmanzaneda)
+## Authors
 
-- **Sara Vidal**  -  [![GitHub Profile](https://img.shields.io/badge/-@saravigon-black?style=flat-square&logo=github)](https://github.com/saravigon)
+- **Alex Manzaneda** - [![GitHub Profile](https://img.shields.io/badge/-@alexmanzaneda-black?style=flat-square&logo=github)](https://github.com/alexmanzaneda)
+
+- **Sara Vidal** - [![GitHub Profile](https://img.shields.io/badge/-@saravigon-black?style=flat-square&logo=github)](https://github.com/saravigon)
 
 
+## License
+© 2026 Puntadas. All rights reserved. 
+This repository is published publicly for portfolio and demonstration purposes only. Copying, distributing, or adapting the code, design, or assets without explicit permission is strictly prohibited.
