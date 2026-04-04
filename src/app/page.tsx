@@ -71,7 +71,15 @@ export default function Home() {
                   </Link>
                 </div>
 
-                <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                {/* Mobile: 2 productos */}
+                <div className="grid grid-cols-2 gap-8 lg:hidden">
+                  {categoryProducts.slice(0, 2).map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+
+                {/* Desktop: 3 productos */}
+                <div className="hidden lg:grid lg:grid-cols-3 gap-8">
                   {categoryProducts.slice(0, 3).map((product) => (
                     <ProductCard key={product.id} product={product} />
                   ))}

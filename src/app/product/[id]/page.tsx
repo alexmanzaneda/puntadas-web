@@ -97,10 +97,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <section className="bg-stone-50 mt-16 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-stone-900 mb-8">Más productos de {product.category}</h2>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
             {products
               .filter((p) => p.category === product.category && p.id !== product.id)
-              .slice(0, 3)
+              .slice(0, 4)
               .map((relatedProduct) => (
                 <Link
                   key={relatedProduct.id}
@@ -113,12 +113,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
                       alt={relatedProduct.name}
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                      sizes="(max-width: 768px) 50vw, 25vw"
                     />
                   </div>
-                  <div className="flex flex-1 flex-col p-4">
-                    <h3 className="text-lg font-semibold text-stone-900">{relatedProduct.name}</h3>
-                    <p className="mt-1 text-sm text-stone-600 line-clamp-2">{relatedProduct.description}</p>
+                  <div className="flex flex-1 flex-col p-2 sm:p-3">
+                    <h3 className="text-sm sm:text-base font-semibold text-stone-900 line-clamp-1">{relatedProduct.name}</h3>
+                    <p className="mt-1 text-xs sm:text-sm text-stone-600 line-clamp-1">{relatedProduct.description}</p>
                   </div>
                 </Link>
               ))}
