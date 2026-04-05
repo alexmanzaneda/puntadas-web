@@ -1,3 +1,8 @@
+'use client';
+
+import { useState } from 'react';
+import Footer from '@/components/layout/Footer';
+
 const faqs = [
   {
     question: '¿Cuánto tarda mi pedido?',
@@ -9,7 +14,7 @@ const faqs = [
   },
   {
     question: '¿Qué pasa si no me gusta el producto o tiene defectos?',
-    answer: 'Como todos nuestros productos son personalizados y confeccionados específicamente para ti, no aceptamos devoluciones en general. Sin embargo, si identificas algún defecto de fabricación, material inadecuado o inconveniente, contáctanos inmediatamente por WhatsApp con fotos. Evaluaremos cada caso individually y buscaremos la mejor solución.',
+    answer: 'Como todos nuestros productos son personalizados y confeccionados específicamente para ti, no aceptamos devoluciones en general. Sin embargo, si identificas algún defecto de fabricación, material inadecuado o inconveniente, contáctanos inmediatamente por WhatsApp con fotos. Evaluaremos cada caso individualmente y buscaremos la mejor solución.',
   },
   {
     question: '¿Los productos son artesanales?',
@@ -29,22 +34,48 @@ const faqs = [
   },
 ];
 
-import Footer from '@/components/layout/Footer';
-
 export default function PreguntasFrecuentesPage() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggleAccordion = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
     <>
       <main className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
-      <p className="text-xs tracking-[0.2em] text-stone-500">AYUDA</p>
-      <h1 className="mt-3 text-4xl font-semibold text-stone-900">Preguntas frecuentes</h1>
-      <div className="mt-10 space-y-8">
-        {faqs.map((faq) => (
-          <article key={faq.question} className="border-b border-stone-200 pb-6">
-            <h2 className="text-xl font-medium text-stone-900">{faq.question}</h2>
-            <p className="mt-2 text-stone-700">{faq.answer}</p>
-          </article>
-        ))}
-      </div>
+        <p className="text-xs tracking-[0.2em] text-stone-500">AYUDA</p>
+        <h1 className="mt-3 text-4xl font-semibold text-stone-900">Preguntas frecuentes</h1>
+        <div className="mt-10 space-y-3">
+          {faqs.map((faq, index) => (
+            <div key={index} className="border border-stone-200 rounded-lg overflow-hidden">
+              {/* Pregunta - Button */}
+              <button
+                onClick={() => toggleAccordion(index)}
+                className="w-full flex items-center justify-between px-6 py-4 bg-white hover:bg-stone-50 transition-colors text-left"
+              >
+                <h2 className="text-lg font-medium text-stone-900">{faq.question}</h2>
+                <svg
+                  className={`w-5 h-5 text-stone-600 transition-transform duration-300 flex-shrink-0 ml-4 ${
+                    openIndex === index ? 'rotate-180' : ''
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+              </button>
+
+              {/* Respuesta - Desplegable */}
+              {openIndex === index && (
+                <div className="px-6 py-4 bg-stone-50 border-t border-stone-200">
+                  <p className="text-stone-700 leading-relaxed">{faq.answer}</p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </main>
       <Footer />
     </>
