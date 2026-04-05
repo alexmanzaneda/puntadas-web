@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <main className="w-full">
       {/* HERO SECTION */}
-      <section className="relative w-full h-[500px] sm:h-[600px] lg:h-[700px] overflow-hidden">
+      <section className="relative w-full h-[350px] sm:h-[600px] lg:h-[700px] overflow-hidden">
         <Image
           src="/images/Portada.png"
           alt="Puntadas - Bolsos Artesanales"
