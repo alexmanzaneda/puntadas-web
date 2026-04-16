@@ -86,7 +86,15 @@ export default function Home() {
                     Explorar neceseres →
                   </Link>
                 </div>
-                <div>
+                <div className="md:hidden grid grid-cols-2 gap-8">
+                  {products
+                    .filter((p) => p.category === 'Neceser')
+                    .slice(0, 2)
+                    .map((product) => (
+                      <ProductCard key={product.id} product={product} />
+                    ))}
+                </div>
+                <div className="hidden md:block">
                   <ProductCard product={products.filter((p) => p.category === 'Neceser')[1]} />
                 </div>
               </div>
@@ -107,7 +115,15 @@ export default function Home() {
                     Explorar correas →
                   </Link>
                 </div>
-                <div>
+                <div className="md:hidden grid grid-cols-2 gap-8">
+                  {products
+                    .filter((p) => p.category === 'Correa')
+                    .slice(0, 2)
+                    .map((product) => (
+                      <ProductCard key={product.id} product={product} />
+                    ))}
+                </div>
+                <div className="hidden md:block">
                   <ProductCard product={products.filter((p) => p.category === 'Correa')[0]} />
                 </div>
               </div>
@@ -128,7 +144,15 @@ export default function Home() {
                     Explorar accesorios →
                   </Link>
                 </div>
-                <div>
+                <div className="md:hidden grid grid-cols-2 gap-8">
+                  {products
+                    .filter((p) => p.category === 'Accesorio')
+                    .slice(0, 2)
+                    .map((product) => (
+                      <ProductCard key={product.id} product={product} />
+                    ))}
+                </div>
+                <div className="hidden md:block">
                   <ProductCard product={products.filter((p) => p.category === 'Accesorio')[0]} />
                 </div>
               </div>
@@ -143,10 +167,10 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <p className={`text-xs tracking-[0.2em] ${palette.secondaryText} mb-4 opacity-60 uppercase`}>Sobre nosotros</p>
-              <h2 className={`text-3xl sm:text-4xl font-semibold ${palette.secondaryText} tracking-wide mb-6 leading-tight`}>
+              <h2 className={`text-2xl sm:text-3xl lg:text-4xl font-semibold ${palette.secondaryText} tracking-wide mb-6 leading-tight`}>
                 Conoce la Historia de Puntadas
               </h2>
-              <p className={`text-lg ${palette.secondaryText} opacity-80 mb-8 leading-relaxed`}>
+              <p className={`text-base sm:text-lg ${palette.secondaryText} opacity-80 mb-8 leading-relaxed`}>
                 Cada pieza que creamos es resultado de pasión, dedicación y amor por el trabajo artesanal. 
                 Desde nuestro inicio, nos comprometemos con crear bolsos y accesorios únicos que reflejen 
                 tu personalidad y estilo de vida.
@@ -158,8 +182,13 @@ export default function Home() {
                 Descubre nuestra historia →
               </Link>
             </div>
-            <div className={`bg-stone-100 h-96 rounded-lg flex items-center justify-center ${palette.secondaryText} opacity-30`}>
-              <span className="text-lg">Espacio para imagen de marca</span>
+            <div className="relative w-full h-64 sm:h-80 lg:h-96 rounded-lg overflow-hidden mx-auto">
+              <Image
+                src="/images/Foto-inicial.jpg"
+                alt="Historia de Puntadas"
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
         </div>
