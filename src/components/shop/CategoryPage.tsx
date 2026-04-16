@@ -23,9 +23,13 @@ export default function CategoryPage({
   const categoryProducts = products.filter((product) => product.category === category);
 
   // Obtener filtros únicos disponibles para esta categoría
-  const availableFilters = Array.from(
+  const uniqueFilters = Array.from(
     new Set(categoryProducts.filter((p) => p.type).map((p) => p.type))
   ) as BolsoType[];
+
+  const availableFilters = uniqueFilters.includes('Nueva colección')
+    ? (['Nueva colección', ...uniqueFilters.filter((filter) => filter !== 'Nueva colección')] as BolsoType[])
+    : uniqueFilters;
 
   // Filtrar productos según la selección
   const filteredProducts = selectedFilter

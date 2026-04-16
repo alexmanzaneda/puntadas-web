@@ -4,7 +4,7 @@ export type ProductCategory =
   | 'Correa'
   | 'Accesorio';
 
-export type BolsoType = 'Ganchillo' | 'Letras' | 'Denim';
+export type BolsoType = 'Nueva colección' | 'Ganchillo' | 'Letras' | 'Denim' | 'Volantes' | 'Classic' | 'Chupetero' | 'Fundas' | 'Collares';
 
 export interface Product {
   id: string;
@@ -13,6 +13,6 @@ export interface Product {
   price: number;
   images: string[]; // Array de imágenes del producto
   category: ProductCategory;
-  type?: BolsoType; // Solo para bolsos
+  type?: BolsoType; // Tipo de producto dentro de la categoría
   inStock: boolean;
 }
