@@ -15,7 +15,7 @@ export default function Footer() {
 
             <div className="mt-6 sm:mt-8 flex items-center gap-6">
               <a
-                href="https://www.instagram.com/puntadas_pc/"
+                href="https://www.instagram.com/puntadasbcn/"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"
