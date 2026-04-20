@@ -313,7 +313,10 @@ export const products: Product[] = [
     name: 'Correa floral',
     description: 'Correa con estampado floral ideal para la primavera',
     price: 15.00,
-    images: ['/images/correa/floral.png'],
+    images: [
+      '/images/correa/floral.png',
+      '/images/correa/floral-movil.png'
+    ],
     category: 'Correa',
     type: 'Correas móvil',
     inStock: true,

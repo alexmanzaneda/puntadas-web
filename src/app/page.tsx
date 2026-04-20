@@ -124,7 +124,7 @@ export default function Home() {
                     ))}
                 </div>
                 <div className="hidden md:block">
-                  <ProductCard product={products.filter((p) => p.category === 'Correa')[0]} />
+                  <ProductCard product={products.filter((p) => p.category === 'Correa')[0]} imageIndex={1} />
                 </div>
               </div>
             )}
@@ -153,7 +153,7 @@ export default function Home() {
                     ))}
                 </div>
                 <div className="hidden md:block">
-                  <ProductCard product={products.filter((p) => p.category === 'Accesorio')[0]} />
+                  <ProductCard product={products.filter((p) => p.category === 'Accesorio')[0]} imageIndex={1} />
                 </div>
               </div>
             )}
