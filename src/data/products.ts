@@ -267,6 +267,18 @@ export const products: Product[] = [
     inStock: true,
   },
   {
+     id: 'neceser-pack',
+    name: 'Pack Neceseres',
+    description: 'Set de neceseres en tonos lavanda y blanco. Incluye dos piezas de diferentes tamaños, perfectas para organizar tus cosméticos, accesorios de viaje o básicos diarios. Forrado interior resistente, ideal para llevar contigo con estilo artesanal.',
+    price: 25.00,
+    images: [
+      '/images/neceser/pack.png',
+      '/images/neceser/pack-relleno.jpeg'
+    ],
+    category: 'Neceser',
+    inStock: true,
+  },
+  {
     id: 'neceser-limones',
     name: 'Lemon',
     description: 'Neceser estilo veraniego con adorable estampado de limones. Perfecto para organizar accesorios de viaje o diarios',
@@ -303,6 +315,7 @@ export const products: Product[] = [
     price: 15.00,
     images: ['/images/correa/floral.png'],
     category: 'Correa',
+    type: 'Correas móvil',
     inStock: true,
   },
   {
@@ -312,7 +325,7 @@ export const products: Product[] = [
     price: 15.00,
     images: ['/images/correa/feria.png'],
     category: 'Correa',
-    type: 'Volantes',
+    type: 'Correas móvil',
     inStock: true,
   }, 
   {
@@ -322,7 +335,7 @@ export const products: Product[] = [
     price: 18.00,
     images: ['/images/correa/chupetero-rosa.png'],
     category: 'Correa',
-    type: 'Chupetero',
+    type: 'Chupeteros',
     inStock: true,
   }, 
   {
@@ -332,7 +345,7 @@ export const products: Product[] = [
     price: 18.00,
     images: ['/images/correa/volantes_rosa.png'],
     category: 'Correa',
-    type: 'Volantes',
+    type: 'Correas móvil',
     inStock: true,
   },
   
@@ -343,7 +356,7 @@ export const products: Product[] = [
     price: 18.00,
     images: ['/images/correa/pack-rosa.png'],
     category: 'Correa',
-    type: 'Chupetero',
+    type: 'Chupeteros',
     inStock: true,
   },
   {
@@ -353,7 +366,7 @@ export const products: Product[] = [
     price: 15.00,
     images: ['/images/correa/cuadros_rojos.png'],
     category: 'Correa',
-    type: 'Classic',
+    type: 'Correas móvil',
     inStock: true,
   },
   {
@@ -363,7 +376,7 @@ export const products: Product[] = [
     price: 15.00,
     images: ['/images/correa/cuadrados_rosa.png'],
     category: 'Correa',
-    type: 'Classic',
+    type: 'Correas móvil',
     inStock: true,
   },
   {
@@ -373,7 +386,7 @@ export const products: Product[] = [
     price: 18.00,
     images: ['/images/correa/volantes_azul.png'],
     category: 'Correa',
-    type: 'Volantes',
+    type: 'Correas móvil',
     inStock: true,
   },
   {
@@ -383,7 +396,7 @@ export const products: Product[] = [
     price: 16.00,
     images: ['/images/correa/cuadraditos_rojo.png'],
     category: 'Correa',
-    type: 'Classic',
+    type: 'Correas móvil',
     inStock: true,
   },
   {
@@ -393,13 +406,26 @@ export const products: Product[] = [
     price: 15.00,
     images: ['/images/correa/cuadros_marron.png'],
     category: 'Correa',
-    type: 'Classic',
+    type: 'Correas móvil',
     inStock: true,
   },
 
 
 
   //ACCESORIOS
+  {
+    id: 'accesorio-collar-concha',
+    name: 'Collar Concha',
+    description: 'Collar con pañuelo floral estampado, cuentas de madera y colgante de madreperla. Un accesorio artesanal que combina elegancia y estilo boho',
+    price: 22.00,
+    images: [
+      '/images/accesorio/concha.png',
+      '/images/accesorio/concha-puesto.jpeg'
+    ],
+    category: 'Accesorio',
+    type: 'Collares',
+    inStock: true,
+  },
   {
     id: 'accesorio-funda-portatil',
     name: 'Funda Portátil Acolchada',
@@ -408,6 +434,16 @@ export const products: Product[] = [
     images: ['/images/accesorio/funda_portatil.png'],
     category: 'Accesorio',
     type: 'Fundas',
+    inStock: true,
+  },
+  {
+    id: 'accesorio-collar-topos',
+    name: 'Collar Topos',
+    description: 'Collar con pañuelo estampado de topos en blanco y negro, cuentas metalizadas y encantos de libélula. Elegante y versátil para tus outfits diarios.',
+    price: 22.00,
+    images: ['/images/accesorio/topos.png'],
+    category: 'Accesorio',
+    type: 'Collares',
     inStock: true,
   },
   {
