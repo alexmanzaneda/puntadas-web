@@ -6,22 +6,6 @@ import Footer from '@/components/layout/Footer';
 import { palette } from '@/lib/palette';
 import type { ProductCategory } from '@/types';
 
-const categories: ProductCategory[] = ['Bolso', 'Neceser', 'Correa', 'Accesorio'];
-
-const categoryLabels: Record<ProductCategory, string> = {
-  Bolso: 'BOLSOS',
-  Neceser: 'NECESERES',
-  Correa: 'CORREAS',
-  Accesorio: 'ACCESORIOS',
-};
-
-const categoryRoutes: Record<ProductCategory, string> = {
-  Bolso: '/catalogue/bolsos',
-  Neceser: '/catalogue/neceseres',
-  Correa: '/catalogue/correas-movil',
-  Accesorio: '/catalogue/accesorios',
-};
-
 export default function Home() {
   return (
     <main className="w-full">
@@ -46,49 +30,169 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECCIONES POR CATEGORÍA */}
-      <div className="bg-white">
-        {categories.map((category) => {
-          const categoryProducts = products.filter((p) => p.category === category);
+      {/* NUEVA COLECCIÓN DESTACADA */}
+      <section className="bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="text-center mb-16">
+            <p className={`text-xs tracking-[0.2em] ${palette.secondaryText} mb-4 opacity-60 uppercase`}>Novedad</p>
+            <h2 className={`text-2xl sm:text-3xl lg:text-4xl font-semibold ${palette.secondaryText} tracking-wide mb-6`}>
+              Descubre Nuestra Nueva Colección
+            </h2>
+          </div>
 
-          if (categoryProducts.length === 0) return null;
+          {/* Productos de Nueva Colección */}
+          <div className="grid grid-cols-2 gap-8 lg:grid-cols-3 mb-12">
+            {products
+              .filter((p) => p.category === 'Bolso' && p.type === 'Nueva colección')
+              .map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+          </div>
 
-          return (
-            <section key={category} className="border-b border-stone-200 last:border-b-0">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                <div className="flex items-end justify-between mb-8">
-                  <div>
-                    <p className={`text-xs tracking-[0.2em] ${palette.secondaryText} mb-2 opacity-60`}>COLECCIÓN</p>
-                    <h2 className={`text-3xl sm:text-4xl font-semibold ${palette.secondaryText} tracking-wide`}>
-                      {categoryLabels[category]}
-                    </h2>
-                  </div>
+          <div className="text-center">
+            <Link
+              href="/catalogue/bolsos"
+              className={`inline-block px-8 py-3 ${palette.primaryText} font-medium border-2 border-stone-900 hover:bg-stone-900 hover:text-white transition-colors`}
+            >
+              Ver todos los bolsos →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* OTRAS CATEGORÍAS */}
+      <section className="bg-stone-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="text-center mb-16">
+            <p className={`text-xs tracking-[0.2em] ${palette.secondaryText} mb-4 opacity-60 uppercase`}>Explora</p>
+            <h2 className={`text-2xl sm:text-3xl lg:text-4xl font-semibold ${palette.secondaryText} tracking-wide`}>
+              Nuestras Otras Colecciones
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {/* Neceseres */}
+            {products.filter((p) => p.category === 'Neceser').length > 0 && (
+              <div className="group">
+                <div className="text-center mb-8">
+                  <h3 className={`text-xl font-semibold ${palette.secondaryText} mb-3`}>Neceseres</h3>
+                  <p className={`${palette.secondaryText} opacity-70 mb-5 text-sm`}>
+                    Organiza tus esenciales con estilo artesanal
+                  </p>
                   <Link
-                    href={categoryRoutes[category]}
-                    className={`text-sm font-medium ${palette.primaryText} hover:text-emerald-900 transition-colors`}
+                    href="/catalogue/neceseres"
+                    className={`inline-block text-sm font-medium ${palette.primaryText} hover:text-emerald-900 transition-colors`}
                   >
-                    Ver {categoryLabels[category].toLowerCase()} →
+                    Explorar neceseres →
                   </Link>
                 </div>
-
-                {/* Mobile: 2 productos */}
-                <div className="grid grid-cols-2 gap-8 lg:hidden">
-                  {categoryProducts.slice(0, 2).map((product) => (
-                    <ProductCard key={product.id} product={product} />
-                  ))}
+                <div className="md:hidden grid grid-cols-2 gap-8">
+                  {products
+                    .filter((p) => p.category === 'Neceser')
+                    .slice(0, 2)
+                    .map((product) => (
+                      <ProductCard key={product.id} product={product} />
+                    ))}
                 </div>
-
-                {/* Desktop: 3 productos */}
-                <div className="hidden lg:grid lg:grid-cols-3 gap-8">
-                  {categoryProducts.slice(0, 3).map((product) => (
-                    <ProductCard key={product.id} product={product} />
-                  ))}
+                <div className="hidden md:block">
+                  <ProductCard product={products.filter((p) => p.category === 'Neceser')[1]} />
                 </div>
               </div>
-            </section>
-          );
-        })}
-      </div>
+            )}
+
+            {/* Correas */}
+            {products.filter((p) => p.category === 'Correa').length > 0 && (
+              <div className="group">
+                <div className="text-center mb-8">
+                  <h3 className={`text-xl font-semibold ${palette.secondaryText} mb-3`}>Correas</h3>
+                  <p className={`${palette.secondaryText} opacity-70 mb-5 text-sm`}>
+                    Accesorios funcionales para tu móvil
+                  </p>
+                  <Link
+                    href="/catalogue/correas-movil"
+                    className={`inline-block text-sm font-medium ${palette.primaryText} hover:text-emerald-900 transition-colors`}
+                  >
+                    Explorar correas →
+                  </Link>
+                </div>
+                <div className="md:hidden grid grid-cols-2 gap-8">
+                  {products
+                    .filter((p) => p.category === 'Correa')
+                    .slice(0, 2)
+                    .map((product) => (
+                      <ProductCard key={product.id} product={product} />
+                    ))}
+                </div>
+                <div className="hidden md:block">
+                  <ProductCard product={products.filter((p) => p.category === 'Correa')[0]} imageIndex={1} />
+                </div>
+              </div>
+            )}
+
+            {/* Accesorios */}
+            {products.filter((p) => p.category === 'Accesorio').length > 0 && (
+              <div className="group">
+                <div className="text-center mb-8">
+                  <h3 className={`text-xl font-semibold ${palette.secondaryText} mb-3`}>Accesorios</h3>
+                  <p className={`${palette.secondaryText} opacity-70 mb-5 text-sm`}>
+                    Detalles que marcan la diferencia
+                  </p>
+                  <Link
+                    href="/catalogue/accesorios"
+                    className={`inline-block text-sm font-medium ${palette.primaryText} hover:text-emerald-900 transition-colors`}
+                  >
+                    Explorar accesorios →
+                  </Link>
+                </div>
+                <div className="md:hidden grid grid-cols-2 gap-8">
+                  {products
+                    .filter((p) => p.category === 'Accesorio')
+                    .slice(0, 2)
+                    .map((product) => (
+                      <ProductCard key={product.id} product={product} />
+                    ))}
+                </div>
+                <div className="hidden md:block">
+                  <ProductCard product={products.filter((p) => p.category === 'Accesorio')[0]} imageIndex={1} />
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* CONOCE LA HISTORIA DE LA MARCA */}
+      <section className="bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div>
+              <p className={`text-xs tracking-[0.2em] ${palette.secondaryText} mb-4 opacity-60 uppercase`}>Sobre nosotros</p>
+              <h2 className={`text-2xl sm:text-3xl lg:text-4xl font-semibold ${palette.secondaryText} tracking-wide mb-6 leading-tight`}>
+                Conoce la Historia de Puntadas
+              </h2>
+              <p className={`text-base sm:text-lg ${palette.secondaryText} opacity-80 mb-8 leading-relaxed`}>
+                Cada pieza que creamos es resultado de pasión, dedicación y amor por el trabajo artesanal. 
+                Desde nuestro inicio, nos comprometemos con crear bolsos y accesorios únicos que reflejen 
+                tu personalidad y estilo de vida.
+              </p>
+              <Link
+                href="/nosotros"
+                className={`inline-block px-8 py-3 ${palette.primaryText} font-medium border-2 border-stone-900 hover:bg-stone-900 hover:text-white transition-colors`}
+              >
+                Descubre nuestra historia →
+              </Link>
+            </div>
+            <div className="relative w-full h-64 sm:h-80 lg:h-96 rounded-lg overflow-hidden mx-auto">
+              <Image
+                src="/images/Foto-inicial.jpg"
+                alt="Historia de Puntadas"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* FOOTER INFORMATIVO */}
       <Footer />

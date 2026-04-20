@@ -1,11 +1,11 @@
 'use client';
 
-import { BolsoType } from '@/types';
+import { ProductType } from '@/types';
 
 interface FilterButtonsProps {
-  filters: BolsoType[];
-  selectedFilter: BolsoType | null;
-  onFilterChange: (filter: BolsoType | null) => void;
+  filters: ProductType[];
+  selectedFilter: ProductType | null;
+  onFilterChange: (filter: ProductType | null) => void;
 }
 
 export default function FilterButtons({

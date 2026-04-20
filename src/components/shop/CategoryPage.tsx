@@ -5,7 +5,7 @@ import ProductCard from '@/components/shop/ProductCard';
 import FilterButtons from '@/components/shop/FilterButtons';
 import Footer from '@/components/layout/Footer';
 import { products } from '@/data/products';
-import type { ProductCategory, BolsoType } from '@/types';
+import type { ProductCategory, ProductType } from '@/types';
 
 interface CategoryPageProps {
   category: ProductCategory;
@@ -18,14 +18,18 @@ export default function CategoryPage({
   title,
   subtitle,
 }: CategoryPageProps) {
-  const [selectedFilter, setSelectedFilter] = useState<BolsoType | null>(null);
+  const [selectedFilter, setSelectedFilter] = useState<ProductType | null>(null);
 
   const categoryProducts = products.filter((product) => product.category === category);
 
   // Obtener filtros únicos disponibles para esta categoría
-  const availableFilters = Array.from(
+  const uniqueFilters = Array.from(
     new Set(categoryProducts.filter((p) => p.type).map((p) => p.type))
-  ) as BolsoType[];
+  ) as ProductType[];
+
+  const availableFilters = uniqueFilters.includes('Nueva colección')
+    ? (['Nueva colección', ...uniqueFilters.filter((filter) => filter !== 'Nueva colección')] as ProductType[])
+    : uniqueFilters;
 
   // Filtrar productos según la selección
   const filteredProducts = selectedFilter

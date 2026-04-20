@@ -4,16 +4,17 @@ import { Product } from '@/types';
 
 interface ProductCardProps {
   product: Product;
+  imageIndex?: number;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, imageIndex = 0 }: ProductCardProps) {
   return (
     <Link href={`/product/${product.id}`}>
       <div className="group flex flex-col overflow-hidden rounded-lg border border-stone-200 bg-white transition-all hover:shadow-lg cursor-pointer h-full">
         {/* Contenedor de la imagen */}
         <div className="relative aspect-square overflow-hidden bg-stone-100">
           <Image
-            src={product.images[0]}
+            src={product.images[imageIndex] ?? product.images[0]}
             alt={product.name}
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-110"
