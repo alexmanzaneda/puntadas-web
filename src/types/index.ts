@@ -12,7 +12,8 @@ export type ProductType =
   | 'Correas móvil'
   | 'Chupeteros'
   | 'Collares'
-  | 'Fundas';
+  | 'Fundas'
+  | 'Mochilas';
 
 export interface Product {
   id: string;

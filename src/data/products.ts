@@ -430,6 +430,19 @@ export const products: Product[] = [
     inStock: true,
   },
   {
+    id: 'accesorio-mochila-cuadros',
+    name: 'Mochila Viaje',
+    description: 'Mochila con diseño de cuadros en distintos colores. Medidas para viajar en las compañías de bajo coste y no tener problemas.',
+    price: 35.00,
+    images: [
+      '/images/accesorio/mochila-cuadros-viaje.jpeg',
+      '/images/accesorio/mochila-cuadros-puesta.png'
+    ],
+    category: 'Accesorio',
+    type: 'Mochilas',
+    inStock: true,
+  },
+  {
     id: 'accesorio-funda-portatil',
     name: 'Funda Portátil Acolchada',
     description: 'Funda acolchada beige con cremallera rosa, perfecta para proteger tu portátil o tablet con un toque artesanal',
