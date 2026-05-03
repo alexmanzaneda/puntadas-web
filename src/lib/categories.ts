@@ -3,7 +3,7 @@ import type { ProductCategory } from '@/types';
 export const categoryRoutes: Record<ProductCategory, string> = {
   Bolso: '/catalogue/bolsos',
   Neceser: '/catalogue/neceseres',
-  Correa: '/catalogue/correas-movil',
+  Correa: '/catalogue/correas',
   Accesorio: '/catalogue/accesorios',
 };
 
