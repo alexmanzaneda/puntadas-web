@@ -74,9 +74,9 @@ export default function ContactoPage() {
           <div className="p-6 border border-stone-200 rounded-lg">
             <h3 className="text-lg font-semibold text-stone-950 mb-2">Instagram</h3>
             <p className="text-sm text-stone-600 mb-4">Síguenos para ver nuevos diseños y tendencias</p>
-            <p className="text-2xl font-bold text-stone-950 mb-4">@puntadas_pc</p>
+            <p className="text-2xl font-bold text-stone-950 mb-4">@puntadasbcn</p>
             <a
-              href="https://instagram.com/puntadas_pc"
+              href="https://www.instagram.com/puntadasbcn/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block text-stone-950 font-medium hover:text-stone-700 underline"

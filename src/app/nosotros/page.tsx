@@ -8,7 +8,7 @@ export default function NosotrosPage() {
         <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-12">
           <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-2xl bg-stone-100 shadow-sm">
             <Image
-              src="/images/conchi.jpeg"
+              src="/images/conchi.webp"
               alt="Conchi, fundadora de Puntadas"
               width={900}
               height={1200}

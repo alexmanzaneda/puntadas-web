@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -11,6 +12,45 @@ interface ProductPageProps {
   params: Promise<{
     id: string;
   }>;
+}
+
+// Metadatos por producto para buscadores y vista previa al compartir. Sin precio: es bajo consulta.
+export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
+  const { id } = await params;
+  const product = products.find((p) => p.id === id);
+
+  if (!product) {
+    return { title: 'Pieza no encontrada | Puntadas' };
+  }
+
+  const title = `${product.name} | Puntadas`;
+  const description =
+    product.description.length > 155
+      ? `${product.description.slice(0, 152).trimEnd()}…`
+      : product.description;
+  const url = `/product/${product.id}`;
+  const images = product.images.slice(0, 1).map((src) => ({ url: src, alt: product.name }));
+
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: 'website',
+      locale: 'es_ES',
+      siteName: 'Puntadas',
+      url,
+      title,
+      description,
+      images,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: images.map((image) => image.url),
+    },
+  };
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {

@@ -16,6 +16,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://puntadasbcn.com"),
   title: "Puntadas | Bolsos y Accesorios Artesanales Hechos a Mano",
   description: "Bolsos, accesorios y neceseres artesanales hechos a mano en Barcelona. Cada pieza es única y confeccionada con cuidado especial. Personalización disponible.",
   keywords: ["bolsos artesanales", "bolsos barcelona", "accesorios hechos a mano", "neceseres personalizados", "correas para móvil", "bolsos ganchillo"],
@@ -27,28 +28,12 @@ export const metadata: Metadata = {
     siteName: "Puntadas",
     title: "Puntadas | Bolsos Artesanales",
     description: "Bolsos, accesorios y neceseres artesanales hechos a mano. Cada pieza es única.",
-    images: [
-      {
-        url: "https://puntadasbcn.com/logo.png",
-        width: 512,
-        height: 512,
-        alt: "Puntadas - Logo",
-        type: "image/png",
-      },
-      {
-        url: "https://puntadasbcn.com/images/Portada.png",
-        width: 1200,
-        height: 630,
-        alt: "Puntadas - Bolsos Artesanales",
-        type: "image/png",
-      },
-    ],
+    // La imagen al compartir sale de src/app/opengraph-image.jpg (1200×630)
   },
   twitter: {
     card: "summary_large_image",
     title: "Puntadas | Bolsos Artesanales",
     description: "Bolsos, accesorios y neceseres hechos a mano en Barcelona",
-    images: ["https://puntadasbcn.com/logo.png"],
   },
   icons: {
     icon: "/favicon.ico",

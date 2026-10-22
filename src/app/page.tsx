@@ -4,7 +4,38 @@ import { products } from '@/data/products';
 import ProductCard from '@/components/shop/ProductCard';
 import Footer from '@/components/layout/Footer';
 import { palette } from '@/lib/palette';
+import { getCategoryRoute } from '@/lib/categories';
 import type { ProductCategory } from '@/types';
+
+// Colecciones que aparecen en "Nuestras otras colecciones"
+const otherCollections: {
+  category: ProductCategory;
+  title: string;
+  description: string;
+  linkLabel: string;
+  desktopImageIndex?: number;
+}[] = [
+  {
+    category: 'Neceser',
+    title: 'Neceseres',
+    description: 'Organiza tus esenciales con estilo artesanal',
+    linkLabel: 'Explorar neceseres',
+  },
+  {
+    category: 'Correa',
+    title: 'Correas',
+    description: 'Accesorios funcionales para tu móvil',
+    linkLabel: 'Explorar correas',
+    desktopImageIndex: 1,
+  },
+  {
+    category: 'Accesorio',
+    title: 'Accesorios',
+    description: 'Detalles que marcan la diferencia',
+    linkLabel: 'Explorar accesorios',
+    desktopImageIndex: 1,
+  },
+];
 
 export default function Home() {
   return (
@@ -12,7 +43,7 @@ export default function Home() {
       {/* HERO SECTION */}
       <section className="relative w-full h-[350px] sm:h-[600px] lg:h-[700px] overflow-hidden">
         <Image
-          src="/images/Portada.png"
+          src="/images/Portada.webp"
           alt="Puntadas - Bolsos Artesanales"
           fill
           className="object-cover"
@@ -71,92 +102,34 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {/* Neceseres */}
-            {products.filter((p) => p.category === 'Neceser').length > 0 && (
-              <div className="group">
-                <div className="text-center mb-8">
-                  <h3 className={`text-xl font-semibold ${palette.secondaryText} mb-3`}>Neceseres</h3>
-                  <p className={`${palette.secondaryText} opacity-70 mb-5 text-sm`}>
-                    Organiza tus esenciales con estilo artesanal
-                  </p>
-                  <Link
-                    href="/catalogue/neceseres"
-                    className={`inline-block text-sm font-medium ${palette.primaryText} hover:text-emerald-900 transition-colors`}
-                  >
-                    Explorar neceseres →
-                  </Link>
-                </div>
-                <div className="md:hidden grid grid-cols-2 gap-8">
-                  {products
-                    .filter((p) => p.category === 'Neceser')
-                    .slice(0, 2)
-                    .map((product) => (
-                      <ProductCard key={product.id} product={product} />
-                    ))}
-                </div>
-                <div className="hidden md:block">
-                  <ProductCard product={products.filter((p) => p.category === 'Neceser')[1]} />
-                </div>
-              </div>
-            )}
+            {otherCollections.map(({ category, title, description, linkLabel, desktopImageIndex }) => {
+              // Las piezas salen del catálogo filtrado: si cambian o se borran, la home no se rompe
+              const items = products.filter((p) => p.category === category).slice(0, 2);
+              if (items.length === 0) return null;
 
-            {/* Correas */}
-            {products.filter((p) => p.category === 'Correa').length > 0 && (
-              <div className="group">
-                <div className="text-center mb-8">
-                  <h3 className={`text-xl font-semibold ${palette.secondaryText} mb-3`}>Correas</h3>
-                  <p className={`${palette.secondaryText} opacity-70 mb-5 text-sm`}>
-                    Accesorios funcionales para tu móvil
-                  </p>
-                  <Link
-                    href="/catalogue/correas-movil"
-                    className={`inline-block text-sm font-medium ${palette.primaryText} hover:text-emerald-900 transition-colors`}
-                  >
-                    Explorar correas →
-                  </Link>
-                </div>
-                <div className="md:hidden grid grid-cols-2 gap-8">
-                  {products
-                    .filter((p) => p.category === 'Correa')
-                    .slice(0, 2)
-                    .map((product) => (
+              return (
+                <div key={category} className="group">
+                  <div className="text-center mb-8">
+                    <h3 className={`text-xl font-semibold ${palette.secondaryText} mb-3`}>{title}</h3>
+                    <p className={`${palette.secondaryText} opacity-70 mb-5 text-sm`}>{description}</p>
+                    <Link
+                      href={getCategoryRoute(category)}
+                      className={`inline-block text-sm font-medium ${palette.primaryText} hover:text-emerald-900 transition-colors`}
+                    >
+                      {linkLabel} →
+                    </Link>
+                  </div>
+                  <div className="md:hidden grid grid-cols-2 gap-8">
+                    {items.map((product) => (
                       <ProductCard key={product.id} product={product} />
                     ))}
+                  </div>
+                  <div className="hidden md:block">
+                    <ProductCard product={items[0]} imageIndex={desktopImageIndex} />
+                  </div>
                 </div>
-                <div className="hidden md:block">
-                  <ProductCard product={products.filter((p) => p.category === 'Correa')[0]} imageIndex={1} />
-                </div>
-              </div>
-            )}
-
-            {/* Accesorios */}
-            {products.filter((p) => p.category === 'Accesorio').length > 0 && (
-              <div className="group">
-                <div className="text-center mb-8">
-                  <h3 className={`text-xl font-semibold ${palette.secondaryText} mb-3`}>Accesorios</h3>
-                  <p className={`${palette.secondaryText} opacity-70 mb-5 text-sm`}>
-                    Detalles que marcan la diferencia
-                  </p>
-                  <Link
-                    href="/catalogue/accesorios"
-                    className={`inline-block text-sm font-medium ${palette.primaryText} hover:text-emerald-900 transition-colors`}
-                  >
-                    Explorar accesorios →
-                  </Link>
-                </div>
-                <div className="md:hidden grid grid-cols-2 gap-8">
-                  {products
-                    .filter((p) => p.category === 'Accesorio')
-                    .slice(0, 2)
-                    .map((product) => (
-                      <ProductCard key={product.id} product={product} />
-                    ))}
-                </div>
-                <div className="hidden md:block">
-                  <ProductCard product={products.filter((p) => p.category === 'Accesorio')[0]} imageIndex={1} />
-                </div>
-              </div>
-            )}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -184,7 +157,7 @@ export default function Home() {
             </div>
             <div className="relative w-full h-64 sm:h-80 lg:h-96 rounded-lg overflow-hidden mx-auto">
               <Image
-                src="/images/Foto-inicial.jpg"
+                src="/images/Foto-inicial.webp"
                 alt="Historia de Puntadas"
                 fill
                 className="object-cover"

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { products } from '@/data/products';
+import { categoryRoutes } from '@/lib/categories';
 
 const baseUrl = 'https://puntadasbcn.com';
 
@@ -12,29 +13,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 1,
     },
-    {
-      url: `${baseUrl}/catalogue/bolsos`,
+    // Una ruta por categoría, desde la misma fuente que usa la web
+    ...Object.values(categoryRoutes).map((route) => ({
+      url: `${baseUrl}${route}`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'weekly' as const,
       priority: 0.9,
-    },
+    })),
     {
-      url: `${baseUrl}/catalogue/neceseres`,
+      url: `${baseUrl}/nosotros`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/catalogue/correas-movil`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/catalogue/accesorios`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
+      changeFrequency: 'monthly',
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/contacto`,
