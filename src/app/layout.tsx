@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins, Playfair_Display } from "next/font/google"; 
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 import Navbar from "@/components/layout/Navbar"; 
@@ -90,6 +91,9 @@ export default function RootLayout({
         
         {/* Contenido de la página */}
         {children}
+
+        {/* Analítica de visitas (sin cookies) */}
+        <Analytics />
       </body>
     </html>
   );

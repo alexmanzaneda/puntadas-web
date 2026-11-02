@@ -28,8 +28,8 @@ export default function PoliticaPrivacidadPage() {
         <section>
           <h2 className="text-lg font-semibold text-stone-900 mb-3">Seguimiento y Análisis</h2>
           <p className="text-stone-700 leading-8">
-            Esta web <span className="font-semibold">no utiliza Google Analytics ni ningún sistema de tracking</span>. 
-            No almacenamos información sobre tu navegación, IP, o comportamiento en el sitio.
+            Usamos <span className="font-semibold">Vercel Web Analytics</span> para conocer de forma agregada cuántas visitas recibe la web, qué páginas se ven y desde dónde se llega a ellas.
+            No usa cookies ni nos permite identificarte, y no usamos Google Analytics ni otros sistemas de seguimiento publicitario.
           </p>
         </section>
 
@@ -44,7 +44,7 @@ export default function PoliticaPrivacidadPage() {
 
         <div className="mt-8 p-4 bg-stone-50 rounded-lg border border-stone-200">
           <p className="text-sm text-stone-600">
-            Última actualización: 1 de abril de 2026
+            Última actualización: 2 de noviembre de 2026
           </p>
         </div>
       </div>

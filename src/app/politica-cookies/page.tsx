@@ -19,8 +19,8 @@ export default function PoliticaCookiesPage() {
         <section>
           <h2 className="text-lg font-semibold text-stone-900 mb-3">Herramientas de Análisis</h2>
           <p className="text-stone-700 leading-8">
-            No usamos Google Analytics, Meta Pixel, o ningún otro sistema de analítica web. 
-            Tu navegación en Puntadas es completamente privada y no es rastreada.
+            Usamos Vercel Web Analytics para conocer de forma agregada las visitas y las páginas más vistas. No usa cookies ni nos permite identificarte.
+            No usamos Google Analytics, Meta Pixel ni otras herramientas de seguimiento publicitario.
           </p>
         </section>
 
@@ -44,7 +44,7 @@ export default function PoliticaCookiesPage() {
         <div className="mt-8 p-4 bg-stone-50 rounded-lg border border-stone-200">
           <p className="text-sm text-stone-600">
             <span className="font-semibold">En resumen:</span> Navegas Puntadas sin preocupaciones. 
-            No hay cookies, no hay tracking, no hay publicidad personalizada. Solo tu pedido personalizado cuando nos contactes.
+            No hay cookies, no hay seguimiento individual, no hay publicidad personalizada. Solo tu pedido personalizado cuando nos contactes.
           </p>
         </div>
       </div>
