@@ -3,7 +3,7 @@ import LegalPage from '@/components/ui/LegalPage';
 
 export const metadata: Metadata = {
   title: 'Cookies | Puntadas',
-  description: 'Esta web no usa cookies, ni analítica, ni píxeles de publicidad.',
+  description: 'Esta web no usa cookies ni píxeles de publicidad.',
 };
 
 export default function PoliticaCookiesPage() {
@@ -25,8 +25,9 @@ export default function PoliticaCookiesPage() {
           title: 'Herramientas de análisis',
           body: (
             <p>
-              No usamos Google Analytics, Meta Pixel ni ningún otro sistema de analítica web. Tu visita a Puntadas no se
-              registra.
+              Usamos Vercel Web Analytics para conocer de forma agregada las visitas y las páginas más vistas. No usa
+              cookies ni nos permite identificarte. No usamos Google Analytics, Meta Pixel ni otras herramientas de
+              seguimiento publicitario.
             </p>
           ),
         },
@@ -49,7 +50,7 @@ export default function PoliticaCookiesPage() {
           ),
         },
       ]}
-      note="En resumen: sin cookies, sin seguimiento y sin publicidad personalizada. Solo tu encargo, cuando nos escribas."
+      note="En resumen: sin cookies, sin seguimiento individual y sin publicidad personalizada. Solo tu encargo, cuando nos escribas."
     />
   );
 }

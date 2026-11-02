@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 import Navbar from "@/components/layout/Navbar";
@@ -97,6 +98,9 @@ export default function RootLayout({
         {/* Contenido de la página */}
         {children}
         <RevealObserver />
+
+        {/* Analítica de visitas (sin cookies) */}
+        <Analytics />
       </body>
     </html>
   );

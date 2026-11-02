@@ -35,8 +35,9 @@ export default function PoliticaPrivacidadPage() {
           title: 'Seguimiento y análisis',
           body: (
             <p>
-              Esta web <strong>no usa Google Analytics ni ningún otro sistema de seguimiento</strong>. No guardamos tu
-              navegación, tu IP ni lo que haces en la página.
+              Usamos <strong>Vercel Web Analytics</strong> para conocer de forma agregada cuántas visitas recibe la web,
+              qué páginas se ven y desde dónde se llega a ellas. No usa cookies ni nos permite identificarte, y no usamos
+              Google Analytics ni otros sistemas de seguimiento publicitario.
             </p>
           ),
         },
@@ -50,7 +51,7 @@ export default function PoliticaPrivacidadPage() {
           ),
         },
       ]}
-      note="Última actualización: 1 de abril de 2026."
+      note="Última actualización: 2 de noviembre de 2026."
     />
   );
 }
