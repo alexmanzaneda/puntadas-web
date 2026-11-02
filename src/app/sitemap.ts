@@ -1,10 +1,12 @@
 import type { MetadataRoute } from 'next';
-import { products } from '@/data/products';
+import { getProducts } from '@/lib/catalog';
 import { categoryRoutes } from '@/lib/categories';
 
 const baseUrl = 'https://puntadasbcn.com';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const products = await getProducts();
+
   // Static pages
   const staticRoutes: MetadataRoute.Sitemap = [
     {

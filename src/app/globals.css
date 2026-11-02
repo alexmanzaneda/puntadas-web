@@ -2,19 +2,234 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Usar Playfair Display para títulos */
+/* =============================================================================
+   Sistema de diseño Puntadas (ver DESIGN.md)
+   Minimalismo cálido: hueso, piedra y arena; tinta carbón; nada saturado.
+   ============================================================================= */
+:root {
+  /* Color */
+  --paper: #f9f6f0; /* hueso: fondo de toda la web */
+  --stone: #f2efe9; /* piedra: fondos de foto y paneles suaves */
+  --sand: #e6e2dd; /* arena: un escalón más, campos destacados */
+  --ink: #1c1b1a; /* carbón: texto, botón principal */
+  --ink-soft: #33312e; /* hover del botón principal */
+  --muted: #6b6660; /* texto secundario (contraste ≥ 4.5:1 sobre hueso y piedra) */
+  --line: rgba(28, 27, 26, 0.14); /* líneas divisorias ultrafinas */
+
+  /* Tipografía: el nombre de la marca en cabecera es lo más grande */
+  --step-label: 0.8125rem;
+  --step-small: 0.875rem;
+  --step-body: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  --step-lead: clamp(1.375rem, 1.2rem + 0.6vw, 1.75rem);
+  --step-head: clamp(1.625rem, 1.2rem + 2vw, 3.125rem);
+  --step-brand: clamp(1.75rem, 1.1rem + 3.7vw, 4rem);
+
+  /* Espacio: márgenes amplios y secciones que respiran */
+  --gutter: 1.25rem;
+  --section: 6rem;
+  --header: 4.5rem;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 2.5rem;
+    --section: 10rem;
+    --header: 6.5rem;
+  }
+}
+
 @layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    font-family: var(--font-playfair), serif;
+    font-family: var(--font-display), serif;
+    font-weight: 400;
+    letter-spacing: -0.005em;
   }
 
-  /* Opcional: hacer los títulos un poco más espaciados */
-  h1 {
-    line-height: 1.2;
+  strong,
+  b {
+    font-weight: 500;
+  }
+
+  :focus-visible {
+    outline: 1px solid var(--ink);
+    outline-offset: 4px;
+  }
+
+  ::selection {
+    background: var(--ink);
+    color: var(--paper);
+  }
+}
+
+@layer components {
+  /* Mayúsculas pequeñas de boutique: menús, botones, etiquetas de categoría */
+  .label {
+    font-family: var(--font-text), sans-serif;
+    font-size: var(--step-label);
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  /* Botón principal: carbón plano, esquinas rectas, sin color saturado */
+  .btn {
+    @apply label inline-flex min-h-12 items-center justify-center gap-3 px-8 text-center;
+    background: var(--ink);
+    color: var(--paper);
+    transition:
+      background-color 500ms var(--ease-out),
+      color 500ms var(--ease-out);
+  }
+  .btn:hover {
+    background: var(--ink-soft);
+  }
+
+  /* Botón secundario: solo un filo fino que se rellena al pasar */
+  .btn-outline {
+    @apply label inline-flex min-h-12 items-center justify-center gap-3 px-8 text-center;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    transition:
+      background-color 500ms var(--ease-out),
+      color 500ms var(--ease-out);
+  }
+  .btn-outline:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  /* Enlace con subrayado finísimo que se dibuja de izquierda a derecha */
+  .link-line {
+    position: relative;
+    display: inline-block;
+  }
+  .link-line::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 600ms var(--ease-out);
+  }
+  .link-line:hover::after,
+  .link-line:focus-visible::after,
+  .link-line[aria-current='page']::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* Zoom muy lento de las fotos al pasar (el contenedor lleva .group) */
+  .img-zoom {
+    transition: transform 700ms ease-out;
+  }
+  .group:hover .img-zoom {
+    transform: scale(1.03);
+  }
+
+  /* Fotos de estudio con fondo blanco: se funden con el hueso/piedra de la página.
+     Va en el contenedor que se anima, no en el <img>. */
+  .blend {
+    mix-blend-mode: multiply;
+  }
+
+  /* Nombre bordado en vivo sobre la Tote Dinos (tamaño en cqw desde el componente) */
+  .name-embroidery {
+    font-family: var(--font-display), serif;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1;
+    color: #c4232b;
+    -webkit-text-stroke: 0.015em #a51c23;
+  }
+
+  /* Texto largo (páginas legales, nosotros): medida cómoda y aire entre párrafos */
+  .prose-puntadas {
+    @apply max-w-[62ch] text-body leading-[1.75];
+  }
+  .prose-puntadas p + p {
+    margin-top: 1.25em;
+  }
+}
+
+/* =============================================================================
+   Movimiento: solo transform y opacity. Sin JavaScript o con movimiento
+   reducido, todo se ve desde el principio.
+   ============================================================================= */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 900ms var(--ease-out),
+      transform 1100ms var(--ease-out);
+    transition-delay: var(--delay, 0ms);
+  }
+  .js [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Imagen principal de la home: aparece despacio y se asienta */
+  .js .settle {
+    opacity: 0;
+    animation: settle 1.6s var(--ease-out) 100ms forwards;
+  }
+
+  /* Menú: las fotos de categoría entran escalonadas */
+  [data-menu-item] {
+    animation: menu-in 700ms var(--ease-out) both;
+  }
+
+  /* Foto a sangre de la home: deriva muy lenta */
+  .drift {
+    animation: drift 28s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+@keyframes drift {
+  from {
+    transform: scale(1.03) translateX(0);
+  }
+  to {
+    transform: scale(1.08) translateX(-1.5%);
   }
 }

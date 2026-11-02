@@ -4,8 +4,8 @@ export default function AccesoriosPage() {
   return (
     <CategoryPage
       category="Accesorio"
-      title="ACCESORIOS"
-      subtitle="Detalles que completan tu look con identidad artesanal."
+      title="Accesorios"
+      subtitle="Fundas para portátil y tablet, monederos, collares de tela, coleteros y hasta un collar para tu perro."
     />
   );
 }

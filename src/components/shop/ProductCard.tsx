@@ -1,40 +1,48 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Product } from '@/types';
+import { categoryCovers } from '@/lib/categories';
+import type { PublicProduct } from '@/types';
 
 interface ProductCardProps {
-  product: Product;
+  product: PublicProduct;
   imageIndex?: number;
+  // Tamaño con el que se muestra (para que next/image sirva la resolución justa)
+  sizes?: string;
+  priority?: boolean;
+  // En las páginas de categoría la etiqueta sobra
+  showCategory?: boolean;
 }
 
-export default function ProductCard({ product, imageIndex = 0 }: ProductCardProps) {
+// Tarjeta de pieza: foto sobre piedra, categoría en mayúsculas pequeñas y nombre en serif. Sin precio.
+export default function ProductCard({
+  product,
+  imageIndex = 0,
+  sizes = '(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw',
+  priority = false,
+  showCategory = true,
+}: ProductCardProps) {
+  const categoryLabel = categoryCovers.find((c) => c.category === product.category)?.label ?? product.category;
+
   return (
-    <Link href={`/product/${product.id}`}>
-      <div className="group flex flex-col overflow-hidden rounded-lg border border-stone-200 bg-white transition-all hover:shadow-lg cursor-pointer h-full">
-        {/* Contenedor de la imagen */}
-        <div className="relative aspect-square overflow-hidden bg-stone-100">
+    <Link href={`/product/${product.id}`} className="group block">
+      <div className="relative aspect-[4/5] overflow-hidden bg-stone">
+        <div className="blend absolute inset-0">
           <Image
             src={product.images[imageIndex] ?? product.images[0]}
             alt={product.name}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-110"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority={priority}
+            sizes={sizes}
+            className="img-zoom object-cover"
           />
         </div>
-        
-        {/* Información del producto */}
-        <div className="flex flex-1 flex-col p-4">
-          <h3 className="text-lg font-semibold text-stone-900 group-hover:text-stone-700 transition-colors">{product.name}</h3>
-          <p className="mt-1 text-sm text-stone-600 line-clamp-2">{product.description}</p>
-          
-          <div className="mt-auto pt-4 flex items-center justify-between">
-            {!product.inStock && (
-              <span className="text-xs font-medium text-stone-500 bg-stone-100 px-2 py-1 rounded">
-                Agotado
-              </span>
-            )}
-          </div>
-        </div>
+        {!product.inStock && <span className="label absolute left-3 top-3 bg-paper px-2 py-1">Agotado</span>}
+      </div>
+      <div className="mt-4">
+        <h3 className="font-display text-lead">
+          <span className="link-line">{product.name}</span>
+        </h3>
+        {showCategory && <p className="label mt-1.5 text-muted">{categoryLabel}</p>}
       </div>
     </Link>
   );

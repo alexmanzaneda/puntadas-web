@@ -1,18 +1,22 @@
 import type { Metadata } from "next";
-import { Poppins, Playfair_Display } from "next/font/google"; 
+import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
 
-import Navbar from "@/components/layout/Navbar"; 
+import Navbar from "@/components/layout/Navbar";
+import RevealObserver from "@/components/layout/RevealObserver";
 
-const poppins = Poppins({ 
+// Serif fina para el nombre de la marca y los títulos (se mantiene); sans geométrica y ligera para leer (ver DESIGN.md)
+const display = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500"],
+  style: ["normal", "italic"],
+  variable: "--font-display",
 });
 
-const playfair = Playfair_Display({ 
+const text = DM_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-playfair",
+  weight: ["300", "400", "500"],
+  variable: "--font-text",
 });
 
 export const metadata: Metadata = {
@@ -76,20 +80,23 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="es">
+    <html lang="es" className={`${display.variable} ${text.variable}`} suppressHydrationWarning>
       <head>
+        {/* Marca que hay JavaScript: solo entonces se ocultan los elementos que entran con animación */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         {/* JSON-LD Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrgJSONLD) }}
         />
       </head>
-      <body className={`${poppins.className} ${playfair.variable} bg-white`}>
+      <body className="bg-paper font-sans text-body text-ink">
         {/* Navbar siempre visible */}
         <Navbar />
-        
+
         {/* Contenido de la página */}
         {children}
+        <RevealObserver />
       </body>
     </html>
   );

@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
 import Link from 'next/link';
 import Footer from '@/components/layout/Footer';
-import ShareButton from '@/components/shop/ShareButton';
-import { products } from '@/data/products';
-import { getCategoryRoute } from '@/lib/categories';
 import ImageGallery from '@/components/shop/ImageGallery';
+import ProductCard from '@/components/shop/ProductCard';
+import ShareButton from '@/components/shop/ShareButton';
+import Accordion from '@/components/ui/Accordion';
+import { getProductById, getProductsByCategory } from '@/lib/catalog';
+import { categoryCovers, getCategoryRoute } from '@/lib/categories';
+import { whatsappLink } from '@/lib/constants';
 
 interface ProductPageProps {
   params: Promise<{
@@ -17,7 +19,7 @@ interface ProductPageProps {
 // Metadatos por producto para buscadores y vista previa al compartir. Sin precio: es bajo consulta.
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const { id } = await params;
-  const product = products.find((p) => p.id === id);
+  const product = await getProductById(id);
 
   if (!product) {
     return { title: 'Pieza no encontrada | Puntadas' };
@@ -53,118 +55,116 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   };
 }
 
+// Información común a todas las piezas (sale de las preguntas frecuentes)
+const details = [
+  {
+    title: 'Hecha por encargo',
+    content:
+      'Cada pieza se confecciona desde la tela cuando la pides: se corta, se cose, se forra y se remata a mano. No hay dos iguales.',
+  },
+  {
+    title: 'Personalización',
+    content:
+      'Puedes cambiar colores, telas o tamaño, y añadir iniciales, un nombre o un mensaje. Lo hablamos por WhatsApp y te enseñamos opciones antes de empezar.',
+  },
+  {
+    title: 'Plazo y envío',
+    content:
+      'El plazo mínimo es de una semana, según la pieza y lo que personalices. Después, el envío a la península tarda de 2 a 5 días laborables.',
+  },
+  {
+    title: 'Pago',
+    content: 'Bizum, transferencia o PayPal. Lo acordamos contigo una vez confirmado el encargo.',
+  },
+];
+
 export default async function ProductPage({ params }: ProductPageProps) {
   const { id } = await params;
-  const product = products.find((p) => p.id === id);
+  const product = await getProductById(id);
 
   if (!product) {
     notFound();
   }
 
+  const relatedProducts = (await getProductsByCategory(product.category))
+    .filter((p) => p.id !== product.id)
+    .slice(0, 4);
+  const categoryLabel = categoryCovers.find((c) => c.category === product.category)?.label ?? product.category;
+  const orderMessage = `Hola, me interesa la pieza «${product.name}» de Puntadas: https://puntadasbcn.com/product/${product.id}`;
+
   return (
     <>
-      <main className="min-h-screen bg-white">
-      {/* Breadcrumb */}
-      <nav className="border-b border-stone-200 px-4 py-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-sm text-stone-600">
-          <Link href="/" className="hover:text-stone-900">
-            Inicio
-          </Link>
-          <span className="mx-2">/</span>
-          <Link href={getCategoryRoute(product.category)} className="hover:text-stone-900">
-            {product.category}
-          </Link>
-          <span className="mx-2">/</span>
-          <span className="text-stone-900 font-medium">{product.name}</span>
-        </div>
-      </nav>
-
-      {/* Contenedор principal */}
-      <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
-          {/* Galería de imágenes del producto */}
-          <ImageGallery images={product.images} alt={product.name} />
-
-          {/* Información del producto */}
-          <div className="flex flex-col justify-start">
-            {/* Nombre y categoría */}
-            <div className="mb-4">
-              <p className="text-sm font-medium text-stone-600 uppercase tracking-wide mb-2">
-                {product.category}
-              </p>
-              <h1 className="text-4xl font-bold text-stone-900">{product.name}</h1>
-            </div>
-
-            {/* Disponibilidad */}
-            <div className="mb-6">
-              {product.inStock ? (
-                <div className="inline-flex items-center px-3 py-1 rounded-full bg-green-50 text-green-700 text-sm font-medium">
-                  ✓ En stock
-                </div>
-              ) : (
-                <div className="inline-flex items-center px-3 py-1 rounded-full bg-stone-100 text-stone-700 text-sm font-medium">
-                  Agotado
-                </div>
-              )}
-            </div>
-
-            {/* Descripción */}
-            <div className="mb-8">
-              <h2 className="text-lg font-semibold text-stone-900 mb-3">Descripción</h2>
-              <p className="text-stone-700 leading-relaxed">{product.description}</p>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex gap-4 mb-8">
-              <Link
-                href="/contacto"
-                className="flex-1 px-6 py-3 rounded-md bg-stone-900 text-white font-medium hover:bg-stone-800 transition-colors text-center"
-              >
-                Solicitar información
-              </Link>
-              <ShareButton productName={product.name} productId={product.id} />
-            </div>
-
-            {/* Info adicional */}
-            <div className="space-y-4 pt-8 border-t border-stone-200">
-              <p className="text-sm text-stone-600">Contáctanos para conocer más detalles y realizar tu pedido personalizado</p>
-            </div>
+      <main>
+        <div className="grid gap-10 md:grid-cols-12 md:gap-x-8 md:px-gutter md:pt-6">
+          {/* Fotos */}
+          <div className="md:col-span-7">
+            <ImageGallery images={product.images} alt={product.name} />
           </div>
-        </div>
-      </div>
 
-      {/* Productos relacionados (ejemplo) */}
-      <section className="bg-stone-50 mt-16 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-stone-900 mb-8">Más productos de {product.category}</h2>
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-            {products
-              .filter((p) => p.category === product.category && p.id !== product.id)
-              .slice(0, 4)
-              .map((relatedProduct) => (
-                <Link
-                  key={relatedProduct.id}
-                  href={`/product/${relatedProduct.id}`}
-                  className="group flex flex-col overflow-hidden rounded-lg border border-stone-200 bg-white transition-all hover:shadow-md"
-                >
-                  <div className="relative aspect-square overflow-hidden bg-stone-100">
-                    <Image
-                      src={relatedProduct.images[0]}
-                      alt={relatedProduct.name}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      sizes="(max-width: 768px) 50vw, 25vw"
-                    />
-                  </div>
-                  <div className="flex flex-1 flex-col p-2 sm:p-3">
-                    <h3 className="text-sm sm:text-base font-semibold text-stone-900 line-clamp-1">{relatedProduct.name}</h3>
-                    <p className="mt-1 text-xs sm:text-sm text-stone-600 line-clamp-1">{relatedProduct.description}</p>
-                  </div>
+          {/* Información: se queda fija mientras pasan las fotos */}
+          <div className="px-gutter md:col-span-5 md:px-0">
+            <div className="md:sticky md:top-28 md:pl-6 lg:pl-12">
+              <nav aria-label="Ruta" className="label text-muted">
+                <Link href="/" className="link-line">
+                  Inicio
                 </Link>
-              ))}
+                <span className="mx-2" aria-hidden="true">
+                  /
+                </span>
+                <Link href={getCategoryRoute(product.category)} className="link-line">
+                  {categoryLabel}
+                </Link>
+              </nav>
+
+              <h1 className="mt-6 text-head">{product.name}</h1>
+              <p className="label mt-4 text-muted">{product.inStock ? 'Disponible por encargo' : 'Agotado'}</p>
+
+              <p className="mt-8 max-w-[46ch] text-body">{product.description}</p>
+
+              <div className="mt-10 flex flex-col gap-5">
+                <a
+                  href={whatsappLink(orderMessage)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn w-full"
+                >
+                  Encargar por WhatsApp
+                </a>
+                <p className="text-small text-muted">Precio bajo consulta. Te respondemos con el precio y el plazo.</p>
+                <div className="flex items-center gap-8">
+                  <ShareButton productName={product.name} productId={product.id} />
+                  <Link href="/contacto" className="label link-line">
+                    Hacer una pregunta
+                  </Link>
+                </div>
+              </div>
+
+              <div className="mt-12">
+                <Accordion items={details} />
+              </div>
+            </div>
           </div>
         </div>
-      </section>
+
+        {relatedProducts.length > 0 && (
+          <section className="pt-section" aria-labelledby="relacionados-title">
+            <div className="flex items-end justify-between gap-6 px-gutter">
+              <h2 id="relacionados-title" className="text-head">
+                Más {categoryLabel.toLowerCase()}
+              </h2>
+              <Link href={getCategoryRoute(product.category)} className="label link-line shrink-0">
+                Ver todo
+              </Link>
+            </div>
+            <ul className="mt-10 grid grid-cols-2 gap-x-3 gap-y-12 px-gutter md:mt-14 md:grid-cols-4 md:gap-x-5">
+              {relatedProducts.map((related) => (
+                <li key={related.id}>
+                  <ProductCard product={related} />
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
       </main>
       <Footer />
     </>

@@ -4,8 +4,8 @@ export default function BolsosPage() {
   return (
     <CategoryPage
       category="Bolso"
-      title="BOLSOS"
-      subtitle="Modelos principales de la coleccion con acabados artesanales."
+      title="Bolsos"
+      subtitle="Totes de vichy, pana y rayas, ganchillo de hilo fino y denim reciclado. Cada uno cosido a mano y casi todos por encargo."
     />
   );
 }

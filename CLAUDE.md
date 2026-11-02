@@ -14,6 +14,8 @@ No es una tienda online: no hay carrito ni pago. El objetivo es enseñar las pie
 - Next.js 15 (App Router) · React 19 · TypeScript 5 · Tailwind CSS 3.4
 - Hosting: **Vercel**, despliegue automático al hacer push a `main`.
 - Datos: hoy en `src/data/products.ts` (estático). **En migración a Supabase** (proyecto `puntadasbcn`, cuenta de la colaboradora, plan gratuito).
+  - Claude **no tiene acceso** a ese proyecto (ni MCP ni CLI): los cambios de esquema se escriben como archivos en `supabase/migrations/` y Alex los aplica a mano en el SQL Editor. Ver `supabase/README.md`.
+  - El precio vive en `product_private` (solo admins). La web lee de la vista `catalog`.
 
 ## Comandos
 
@@ -61,7 +63,7 @@ Definido en `src/types/index.ts`.
 
 - Estamos en pleno **rediseño hacia una estética editorial de alto nivel** (referentes: Paloma Wool, Jacquemus, Loewe craft). Nada de "plantilla Tailwind": evita bordes + sombras + `rounded-lg` genéricos.
 - Para cualquier trabajo visual, usa la skill de diseño del repo (`design-taste-frontend`) y, cuando exista, la skill `marca-puntadas` con la identidad cerrada (paleta, tipografías, tono).
-- Tipografías actuales: Poppins (texto) + Playfair Display (títulos, vía `--font-playfair`). Pendientes de revisión en el rediseño.
+- La identidad (paleta hueso/piedra/arena, Cormorant Garamond + DM Sans, componentes, fotos, movimiento) está en **`DESIGN.md`**: léelo antes de tocar cualquier pantalla. Todas las vistas siguen ya ese sistema.
 - Todo debe verse perfecto en **móvil**: la mayoría del tráfico llega desde Instagram/WhatsApp.
 
 ## Idioma y tono
@@ -81,5 +83,5 @@ Definido en `src/types/index.ts`.
 
 ## Contacto de la marca
 
-- WhatsApp: `https://wa.me/34630550136`
+- WhatsApp: `https://wa.me/34604529618` (+34 604 52 96 18). El número solo se muestra en la página de contacto; en el resto, enlaces que abren WhatsApp. Usa siempre `src/lib/constants.ts`.
 - Instagram: `@puntadasbcn` → `https://www.instagram.com/puntadasbcn/` (cualquier otro handle en el código es un error).
