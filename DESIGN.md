@@ -10,7 +10,7 @@ Estado: **v2, octubre 2026**. Rediseño completo inspirado en la dirección de a
 
 > **Minimalismo cálido de boutique: tonos hueso, piedra y arena, tinta carbón, mucho aire, y la pieza cosida a mano como única protagonista.**
 
-- **Referente:** Polène Paris. Se toma el principio (nombre grande y centrado, menú a pantalla completa con fotos, fotos sobre fondos de piedra, mayúsculas pequeñas en la navegación, líneas finísimas, footer sobrio), nunca su logotipo, textos ni composiciones exactas.
+- **Referente:** Polène Paris. Se toma el principio (nombre grande y centrado, menú a pantalla completa con fotos, fotos sobre fondos de piedra, mayúsculas pequeñas solo en la navegación, footer sobrio), nunca su logotipo, textos ni composiciones exactas.
 - **Lo que solo tiene Puntadas:** las telas (vichy, pana, ikat, toile, flores), los volantes y el bordado a mano. Las fotos de cerca y la pila de telas del taller lo cuentan mejor que cualquier texto.
 - **Lo que se puede tocar:** el **nombre bordado en vivo** (`#personaliza`). Escribes un nombre, lo ves bordado en la Tote Dinos y el botón abre WhatsApp con el mensaje escrito.
 - **Nada de precios.** Toda acción acaba en WhatsApp.
@@ -25,7 +25,7 @@ Estado: **v2, octubre 2026**. Rediseño completo inspirado en la dirección de a
 | `--ink` · `text-ink` / `bg-ink` | `#1C1B1A` | Carbón: todo el texto corrido y el botón principal |
 | `--ink-soft` | `#33312E` | Hover del botón principal |
 | `--muted` · `text-muted` | `#6B6660` | Solo lo secundario: etiquetas, notas, categoría en tarjetas (≥ 4.5:1 sobre hueso y piedra; **sobre arena usa carbón**) |
-| `--line` · `border-line` | `rgba(28,27,26,.14)` | Líneas divisorias ultrafinas de 1 px |
+| `--line` · `border-line` | `rgba(28,27,26,.14)` | Reservado (sin líneas divisorias; ver §3) |
 
 Reglas:
 - **Nunca `#FFFFFF` ni negro puro.** Nada de colores saturados en la interfaz: el color lo ponen las piezas.
@@ -37,7 +37,7 @@ Reglas:
 | Familia | Uso | Carga |
 |---|---|---|
 | **Cormorant Garamond** (`font-display`) | Nombre de la marca, `h1`–`h3`, nombres de pieza. Pesos 300/400/500; cursiva solo para el nombre bordado en vivo. **No se cambia.** | `next/font/google`, variable `--font-display` |
-| **DM Sans** (`font-sans`) | Párrafos (peso 300), menús, botones, etiquetas (400). | `next/font/google`, variable `--font-text` |
+| **DM Sans** (`font-sans`) | Párrafos, menús, botones y notas, todo en peso 400 (con 300 sobre hueso se lee lavado). | `next/font/google`, variable `--font-text` |
 
 Escala (tokens en `globals.css`, clases de Tailwind). **Ningún texto de la web es más grande que `PUNTADAS` en la cabecera**, tampoco el del footer ni el nombre bordado en vivo (limitado con `min(…, var(--step-brand))`):
 
@@ -48,11 +48,12 @@ Escala (tokens en `globals.css`, clases de Tailwind). **Ningún texto de la web 
 | `text-lead` | 22 → 28 px | `h3`, nombres en listas, enlaces del menú |
 | `text-body` | 16–17 px, interlineado 1.7 | Texto corrido, en carbón |
 | `text-small` | 14 px | Notas, enlaces del footer |
-| `.label` | 13 px, MAYÚSCULAS, tracking 0.16em | Menú, botones, categorías, etiquetas de formulario, ruta de navegación |
+| `.label` | 13 px, MAYÚSCULAS, tracking 0.16em | **Solo** el menú y los botones (`.btn`, `.btn-outline`). Todo lo demás (categoría bajo el nombre, ruta, filtros, footer, enlaces de texto, etiquetas de formulario) va en `text-small` o `text-body`, en minúscula normal |
 
 Reglas:
 - Titulares en dos líneas como máximo.
-- **No poner etiquetas en mayúsculas encima de cada título** (el típico "kicker"): es un tic de plantilla. Las mayúsculas pequeñas son para navegar y actuar, no para decorar.
+- **No poner etiquetas en mayúsculas encima de cada título** (el típico "kicker"): es un tic de plantilla. Las mayúsculas pequeñas espaciadas son solo para el menú y los botones; repartidas por toda la página son el tic más reconocible de las webs hechas con IA.
+- **Sin líneas divisorias.** Se separa con espacio o con un escalón de tono (hueso → piedra). Las únicas líneas que quedan son el filo de `.btn-outline`, el subrayado de `.link-line` y el del campo de texto del nombre bordado.
 - Nada de numeración decorativa (01, 02, 03).
 
 ## 4. Espacio y retícula
@@ -65,28 +66,28 @@ Reglas:
 
 ## 5. Componentes
 
-- **Cabecera** (`layout/Navbar.tsx`): altura fija, siempre hueso translúcido (`backdrop-blur`) con una línea gris clara debajo, para que se intuya lo que pasa por detrás. Desde 1280 px: las cuatro secciones a la izquierda y `PUNTADAS` centrado; a la derecha, de momento, nada. Por debajo de 1280 px (móvil y tablet), icono de menú a la izquierda (las cuatro secciones no caben junto al nombre centrado).
-- **Menú a pantalla completa** (solo móvil y tablet): cuatro fotos de categoría (`categoryCovers` en `lib/categories.ts`) con etiqueta, una lista en serif separada por líneas finas y los enlaces a WhatsApp e Instagram. Se cierra con la ×, con Escape o al navegar.
+- **Cabecera** (`layout/Navbar.tsx`): altura fija, hueso sólido, sin línea debajo ni desenfoque. Desde 1280 px: las cuatro secciones a la izquierda y `PUNTADAS` centrado; a la derecha, de momento, nada (entre 1280 y 1535 px los enlaces van más juntos para no pegarse al nombre). Por debajo de 1280 px (móvil y tablet), icono de menú a la izquierda (las cuatro secciones no caben junto al nombre centrado).
+- **Menú a pantalla completa** (solo móvil y tablet): cuatro fotos de categoría (`categoryCovers` en `lib/categories.ts`) con etiqueta, una lista en serif separada por espacio y los enlaces a WhatsApp e Instagram. Se cierra con la ×, con Escape o al navegar.
 - **Botones** (uno por acción):
   - `.btn`: carbón plano, texto hueso en `.label`, 48 px de alto, esquinas rectas; hover a `--ink-soft` en 500 ms.
   - `.btn-outline`: solo un filo de 1 px que se rellena al pasar. Para acciones secundarias.
 - **Enlaces** (`.link-line`): subrayado de 1 px que se dibuja de izquierda a derecha en 600 ms. También marca el filtro activo (`aria-current`).
-- **Tarjeta de pieza** (`shop/ProductCard.tsx`): foto sobre piedra (4:5) con zoom lento, nombre en serif y categoría en `.label` debajo (`showCategory={false}` dentro de una categoría). Sin precio.
-- **Footer** (`layout/Footer.tsx`): una línea fina arriba, una frase, tres columnas de enlaces (Catálogo, Ayuda, Síguenos) y la línea legal. Sin repetir `PUNTADAS` ni el número de teléfono.
+- **Tarjeta de pieza** (`shop/ProductCard.tsx`): foto sobre piedra (4:5) con zoom lento, nombre en serif y categoría en `text-small` gris debajo (`showCategory={false}` dentro de una categoría). Sin precio.
+- **Footer** (`layout/Footer.tsx`): fondo piedra (un escalón de tono sobre el hueso), una frase, tres columnas de enlaces (Catálogo, Ayuda, Síguenos) y la línea legal. Sin repetir `PUNTADAS` ni el número de teléfono.
 - **Cabecera de página** (`ui/PageHeader.tsx`): título y entradilla.
-- **Acordeón** (`ui/Accordion.tsx`): filas separadas por líneas finas, signo +/− dibujado; preguntas frecuentes y detalles de la ficha.
-- **Páginas de texto** (`ui/LegalPage.tsx`): título del apartado a la izquierda, texto a la derecha, separados por líneas finas.
-- **Contacto:** siempre las constantes de `lib/constants.ts` (`WHATSAPP_URL`, `whatsappLink(mensaje)`, `INSTAGRAM_URL`). **El número de teléfono (+34 604 52 96 18) solo se muestra en la página de contacto**; en el resto de la web, enlaces que abren WhatsApp.
+- **Acordeón** (`ui/Accordion.tsx`): cada fila en un panel de piedra separado por espacio, signo +/− dibujado; preguntas frecuentes y detalles de la ficha.
+- **Páginas de texto** (`ui/LegalPage.tsx`): título del apartado a la izquierda, texto a la derecha, separados por espacio.
+- **Contacto:** siempre las constantes de `lib/constants.ts` (`WHATSAPP_URL`, `whatsappLink(mensaje)`, `INSTAGRAM_URL`). **El número de teléfono (+34 630 55 01 36) solo se muestra en la página de contacto**; en el resto de la web, enlaces que abren WhatsApp.
 
 ## 6. Vistas
 
 | Vista | Estructura |
 |---|---|
-| Home | Hero con `public/images/Portada.webp` a sangre bajo la cabecera y el titular en una tarjeta hueso → Novedades (cuatro piezas iguales en fila) → Qué hay en el taller (4 categorías, sin recuentos sueltos) → Con su nombre (personalización, sobre arena) → Así se hace un encargo (tres fotos que crecen) → El taller → Encarga la tuya (telas a sangre con tarjeta) |
+| Home | Hero con `public/images/Portada.webp` panorámica entera a todo el ancho (sin recortar ni ampliar) y debajo, sobre el hueso, el titular a la izquierda y la frase con los botones a la derecha → Novedades (cuatro piezas iguales en fila) → Qué hay en el taller (4 categorías, sin recuentos sueltos) → Con su nombre (personalización, sobre arena) → Así se hace un encargo (tres fotos que crecen) → El taller → Encarga la tuya (telas a sangre con tarjeta) |
 | Categoría | Título centrado, entradilla, foto panorámica opcional (Correas), filtros como pestañas de texto, recuento, rejilla |
 | Ficha | Fotos en rejilla de dos columnas o una sola limitada a la altura de la ventana (carrusel con contador en móvil) + columna fija con ruta, nombre, disponibilidad, descripción, "Encargar por WhatsApp", compartir y acordeón de detalles; "Más bolsos" debajo |
 | El taller | Retrato a la izquierda (cabe entero en pantalla) y título, entradilla y texto a la derecha; debajo, "Cómo se hace" en tres fotos |
-| Contacto | Canales con líneas finas (WhatsApp, Instagram, horario) y el proceso en cuatro pasos |
+| Contacto | Canales separados por espacio (WhatsApp, Instagram, horario) y el proceso en cuatro pasos |
 | FAQ, devoluciones, privacidad, cookies | Plantillas de texto con acordeón o apartados |
 
 Lo que el diseño pide a la base de datos (fase 2): `cutout_image` (recorte con fondo blanco), `lifestyle_images[]`, `alt` por imagen, `is_featured` / orden de Novedades (hoy `NEW_ARRIVAL_IDS` en `app/page.tsx`), `personalizable` y `materials`. Las portadas de categoría pasarían a la tabla `categories`.
@@ -95,7 +96,7 @@ Lo que el diseño pide a la base de datos (fase 2): `cutout_image` (recorte con 
 
 - **Catálogo:** fondo blanco, de frente, con aire alrededor; la web lo funde con la piedra. Mismo encuadre y luz en todas.
 - **Detalle:** de cerca, sin fondo blanco forzado, con la luz igualada a la foto principal (prompt con foto de referencia, ver historial).
-- **Contexto:** taller, telas, terraza. Evitar escenas generadas por IA presentadas como reales. Excepción decidida por la marca: la portada de la home (`Portada.webp`), generada con Gemini; se le ha quitado la marca ✦ desde el original.
+- **Contexto:** taller, telas, terraza. Evitar escenas generadas por IA presentadas como reales. La portada de la home (`Portada.webp`) es una foto real del taller: correas colgadas y neceseres. Se exporta a 2880 px de ancho, webp calidad 90; el original va fuera del repo.
 - Sin la marca ✦ de Gemini y revisando que la etiqueta "puntadasbcn · Hecho a mano" no salga deformada.
 - Webp ≤ 300 KB, siempre `next/image` con `sizes` y `alt` en castellano.
 
@@ -105,7 +106,7 @@ Solo `transform` y `opacity`; con `prefers-reduced-motion` o sin JavaScript todo
 
 - **Zoom lento** de las fotos al pasar: `.img-zoom` dentro de un `.group`, `scale(1.03)` en 700 ms `ease-out`.
 - **Entradas** con `data-reveal` (sube 20 px y aparece), escalonadas con `style={{ '--delay': '80ms' }}`; las activa `RevealObserver`.
-- **Hero:** la portada aparece despacio (`.settle`).
+- **Hero:** la portada aparece despacio (`.settle`), solo con opacidad: escalarla la emborrona.
 - **Cabecera:** fija; no cambia de tamaño ni de fondo al hacer scroll.
 - **Foto a sangre** del contacto: deriva muy lenta (`.drift`).
 
@@ -116,9 +117,9 @@ Castellano, tuteo, frases cortas. Se habla de telas, costuras, plazos y cómo se
 ## 10. Revisión
 
 ```bash
-node .claude/skills/design-taste-frontend/scripts/inspect.mjs http://localhost:3000/<ruta> --allow hairline,micro-label,palette-cream
+node .claude/skills/design-taste-frontend/scripts/inspect.mjs http://localhost:3000/<ruta> --allow palette-cream
 ```
 
-Las reglas `hairline`, `micro-label` y `palette-cream` se permiten a propósito (líneas finas, mayúsculas pequeñas y fondo hueso son parte de esta identidad). En páginas de texto (FAQ, legales, contacto) el inspector pedirá fotos y un elemento dominante: no aplica. El aviso de "focal point" en el hero viene de que el nombre de la marca sea lo más grande, que es una decisión de marca.
+La regla `palette-cream` se permite a propósito (el fondo hueso es parte de esta identidad). `hairline` y `micro-label` ya no: si saltan, es un fallo que hay que arreglar. En páginas de texto (FAQ, legales, contacto) el inspector pedirá fotos y un elemento dominante: no aplica. El aviso de "focal point" en el hero viene de que el nombre de la marca sea lo más grande, que es una decisión de marca.
 
 Si cambias `tailwind.config.ts`, **reinicia `npm run dev`**: la configuración no se recarga sola.

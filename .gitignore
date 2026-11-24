@@ -40,3 +40,6 @@ Thumbs.db
 
 # Archivos de trabajo de la skill de diseño (capturas del inspector, hojas de dirección)
 .taste-skill/
+
+# Fotos copiadas para retocar (no se suben)
+retoque-fotos/

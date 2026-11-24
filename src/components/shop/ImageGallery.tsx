@@ -46,7 +46,7 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
           ))}
         </div>
         {images.length > 1 && (
-          <p className="label absolute bottom-4 right-gutter bg-paper px-2 py-1 tabular-nums" aria-live="polite">
+          <p className="text-small absolute bottom-4 right-gutter bg-paper px-2 py-1 tabular-nums" aria-live="polite">
             {current + 1} / {images.length}
           </p>
         )}

@@ -14,8 +14,8 @@ const infoLinks = [
   { href: '/contacto', label: 'Contacto' },
 ];
 
-// Fondo de la cabecera: hueso translúcido para que se intuya lo que pasa por detrás
-const BAR = 'border-b border-line bg-[rgba(249,246,240,0.78)] backdrop-blur-md';
+// Fondo de la cabecera: hueso sólido, sin línea ni desenfoque
+const BAR = 'bg-paper';
 
 function MenuIcon() {
   return (
@@ -60,8 +60,9 @@ export default function Navbar() {
       <header className={`sticky top-0 z-40 ${BAR}`}>
         <div className="grid h-header grid-cols-[1fr_auto_1fr] items-center px-gutter">
           {/* Escritorio: secciones */}
-          <nav aria-label="Secciones" className="hidden xl:block">
-            <ul className="flex gap-8 2xl:gap-10">
+          {/* Entre 1280 y 1535 px los enlaces van más juntos para no pegarse a PUNTADAS */}
+          <nav aria-label="Secciones" className="hidden pr-6 xl:block">
+            <ul className="flex gap-5 2xl:gap-10">
               {categoryCovers.map((cover) => {
                 const href = getCategoryRoute(cover.category);
                 return (
@@ -69,7 +70,7 @@ export default function Navbar() {
                     <Link
                       href={href}
                       aria-current={pathname === href ? 'page' : undefined}
-                      className="label link-line"
+                      className="label link-line max-2xl:tracking-[0.08em]"
                     >
                       {cover.label}
                     </Link>
@@ -140,13 +141,13 @@ export default function Navbar() {
               ))}
             </ul>
 
-            <ul className="mt-14 border-t border-line">
+            <ul className="mt-12">
               {infoLinks.map((link) => (
-                <li key={link.href} className="border-b border-line">
+                <li key={link.href}>
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="group flex min-h-16 items-center justify-between font-display text-lead"
+                    className="group flex min-h-14 items-center justify-between font-display text-lead"
                   >
                     {link.label}
                     <span

@@ -15,7 +15,7 @@ interface LegalPageProps {
 }
 
 // Plantilla de las páginas de texto (devoluciones, privacidad, cookies):
-// título del apartado a la izquierda y el texto a la derecha, separados por líneas finas
+// título del apartado a la izquierda y el texto a la derecha, separados por espacio
 export default function LegalPage({ title, intro, sections, note }: LegalPageProps) {
   return (
     <>
@@ -26,7 +26,7 @@ export default function LegalPage({ title, intro, sections, note }: LegalPagePro
           {sections.map((section) => (
             <section
               key={section.title}
-              className="grid gap-4 border-t border-line py-10 md:grid-cols-12 md:gap-x-8 md:py-14"
+              className="grid gap-4 py-10 md:grid-cols-12 md:gap-x-8 md:py-14"
               data-reveal
             >
               <h2 className="text-lead md:col-span-4">{section.title}</h2>
@@ -35,7 +35,7 @@ export default function LegalPage({ title, intro, sections, note }: LegalPagePro
           ))}
 
           {note && (
-            <div className="border-t border-line py-10 md:grid md:grid-cols-12 md:gap-x-8">
+            <div className="py-10 md:grid md:grid-cols-12 md:gap-x-8">
               <p className="text-small text-muted md:col-span-7 md:col-start-6">{note}</p>
             </div>
           )}

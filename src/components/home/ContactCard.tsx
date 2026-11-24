@@ -34,10 +34,10 @@ export default function ContactCard() {
         </h2>
         <p className="mt-4 text-body">Escríbenos y te contamos telas, plazo y precio. Sin compromiso.</p>
 
-        <dl className="mt-8 border-t border-line">
+        <dl className="mt-8 space-y-2">
           {details.map((item) => (
-            <div key={item.term} className="flex items-baseline justify-between gap-4 border-b border-line py-3">
-              <dt className="label text-muted">{item.term}</dt>
+            <div key={item.term} className="flex items-baseline justify-between gap-4 py-1">
+              <dt className="text-small text-muted">{item.term}</dt>
               <dd className="text-small">
                 {item.href ? (
                   <a href={item.href} target="_blank" rel="noopener noreferrer" className="link-line tabular-nums">

@@ -48,7 +48,7 @@
   body {
     background: var(--paper);
     color: var(--ink);
-    font-weight: 300;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -80,7 +80,7 @@
 }
 
 @layer components {
-  /* Mayúsculas pequeñas de boutique: menús, botones, etiquetas de categoría */
+  /* Mayúsculas pequeñas: solo menú y botones. Lo demás va en texto normal (text-small / text-body) */
   .label {
     font-family: var(--font-text), sans-serif;
     font-size: var(--step-label);
@@ -192,7 +192,7 @@
     transform: none;
   }
 
-  /* Imagen principal de la home: aparece despacio y se asienta */
+  /* Imagen principal de la home: aparece despacio, sin escalar (escalar la emborrona) */
   .js .settle {
     opacity: 0;
     animation: settle 1.6s var(--ease-out) 100ms forwards;
@@ -212,11 +212,9 @@
 @keyframes settle {
   from {
     opacity: 0;
-    transform: scale(1.04);
   }
   to {
     opacity: 1;
-    transform: scale(1);
   }
 }
 @keyframes menu-in {

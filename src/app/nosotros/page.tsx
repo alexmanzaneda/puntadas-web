@@ -60,7 +60,7 @@ export default function NosotrosPage() {
               Puntadas es un taller pequeño. Cada bolso, neceser o correa se cose en casa, una pieza cada vez, y casi
               todo se hace por encargo.
             </p>
-            <div className="prose-puntadas mt-8 border-t border-line pt-8" data-reveal style={{ '--delay': '160ms' } as React.CSSProperties}>
+            <div className="prose-puntadas mt-10" data-reveal style={{ '--delay': '160ms' } as React.CSSProperties}>
               <p>
                 En Puntadas cada pieza se hace a mano, con cuidado en cada costura y en cada acabado. Buscamos piezas
                 bonitas, que duren y que se usen todos los días.

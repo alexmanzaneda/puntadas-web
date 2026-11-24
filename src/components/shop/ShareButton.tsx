@@ -37,7 +37,7 @@ export default function ShareButton({ productName, productId }: ShareButtonProps
   };
 
   return (
-    <button type="button" onClick={handleShare} className="label link-line" aria-live="polite">
+    <button type="button" onClick={handleShare} className="link-line text-small" aria-live="polite">
       {copied ? 'Enlace copiado' : 'Compartir'}
     </button>
   );

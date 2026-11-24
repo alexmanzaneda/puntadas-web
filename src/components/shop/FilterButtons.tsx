@@ -28,7 +28,7 @@ export default function FilterButtons({ filters, selectedFilter, onFilterChange 
                 type="button"
                 onClick={() => onFilterChange(option.value)}
                 aria-pressed={isActive}
-                className={`label link-line py-2 transition-colors duration-300 ${isActive ? 'text-ink' : 'text-muted hover:text-ink'}`}
+                className={`link-line py-2 text-small transition-colors duration-300 ${isActive ? 'text-ink' : 'text-muted hover:text-ink'}`}
                 aria-current={isActive ? 'page' : undefined}
               >
                 {option.label}

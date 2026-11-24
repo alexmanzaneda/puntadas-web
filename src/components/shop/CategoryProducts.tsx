@@ -24,7 +24,7 @@ export default function CategoryProducts({ products }: CategoryProductsProps) {
 
   return (
     <section aria-label="Piezas">
-      <div className="flex items-center justify-between gap-6 border-y border-line px-gutter py-4">
+      <div className="flex items-center justify-between gap-6 px-gutter py-4">
         <div className="min-w-0 flex-1">
           {availableFilters.length > 0 ? (
             <FilterButtons
@@ -33,16 +33,16 @@ export default function CategoryProducts({ products }: CategoryProductsProps) {
               onFilterChange={setSelectedFilter}
             />
           ) : (
-            <span className="label text-muted">Todo</span>
+            <span className="text-small text-muted">Todo</span>
           )}
         </div>
-        <p className="label hidden shrink-0 text-muted md:block" aria-live="polite">
+        <p className="hidden shrink-0 text-small text-muted md:block" aria-live="polite">
           {count} {count === 1 ? 'pieza' : 'piezas'}
         </p>
       </div>
 
       {count > 0 ? (
-        <ul className="grid grid-cols-2 gap-x-3 gap-y-12 px-gutter pt-10 md:grid-cols-3 md:gap-x-5 md:gap-y-16 md:pt-14 xl:grid-cols-4">
+        <ul className="grid grid-cols-2 gap-x-3 gap-y-12 px-gutter pt-6 md:grid-cols-3 md:gap-x-5 md:gap-y-16 md:pt-8 xl:grid-cols-4">
           {filteredProducts.map((product, i) => (
             <li key={product.id}>
               <ProductCard product={product} priority={i < 4} showCategory={false} />

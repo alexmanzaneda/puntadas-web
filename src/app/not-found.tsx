@@ -14,7 +14,7 @@ export default function NotFound() {
           <Link href="/" className="btn">
             Volver al inicio
           </Link>
-          <Link href={getCategoryRoute('Bolso')} className="label link-line">
+          <Link href={getCategoryRoute('Bolso')} className="link-line text-body">
             Ver el catálogo
           </Link>
         </div>

@@ -19,7 +19,7 @@ export default function NewArrivals({ products }: NewArrivalsProps) {
             Novedades
           </h2>
         </div>
-        <Link href={getCategoryRoute('Bolso')} className="label link-line shrink-0" data-reveal>
+        <Link href={getCategoryRoute('Bolso')} className="link-line shrink-0 text-small" data-reveal>
           Ver todo
         </Link>
       </div>

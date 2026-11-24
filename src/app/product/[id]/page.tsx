@@ -104,7 +104,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           {/* Información: se queda fija mientras pasan las fotos */}
           <div className="px-gutter md:col-span-5 md:px-0">
             <div className="md:sticky md:top-28 md:pl-6 lg:pl-12">
-              <nav aria-label="Ruta" className="label text-muted">
+              <nav aria-label="Ruta" className="text-small text-muted">
                 <Link href="/" className="link-line">
                   Inicio
                 </Link>
@@ -117,7 +117,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </nav>
 
               <h1 className="mt-6 text-head">{product.name}</h1>
-              <p className="label mt-4 text-muted">{product.inStock ? 'Disponible por encargo' : 'Agotado'}</p>
+              <p className="mt-4 text-small text-muted">{product.inStock ? 'Disponible por encargo' : 'Agotado'}</p>
 
               <p className="mt-8 max-w-[46ch] text-body">{product.description}</p>
 
@@ -133,7 +133,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 <p className="text-small text-muted">Precio bajo consulta. Te respondemos con el precio y el plazo.</p>
                 <div className="flex items-center gap-8">
                   <ShareButton productName={product.name} productId={product.id} />
-                  <Link href="/contacto" className="label link-line">
+                  <Link href="/contacto" className="link-line text-small">
                     Hacer una pregunta
                   </Link>
                 </div>
@@ -152,7 +152,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <h2 id="relacionados-title" className="text-head">
                 Más {categoryLabel.toLowerCase()}
               </h2>
-              <Link href={getCategoryRoute(product.category)} className="label link-line shrink-0">
+              <Link href={getCategoryRoute(product.category)} className="link-line shrink-0 text-small">
                 Ver todo
               </Link>
             </div>

@@ -83,5 +83,5 @@ Definido en `src/types/index.ts`.
 
 ## Contacto de la marca
 
-- WhatsApp: `https://wa.me/34604529618` (+34 604 52 96 18). El número solo se muestra en la página de contacto; en el resto, enlaces que abren WhatsApp. Usa siempre `src/lib/constants.ts`.
+- WhatsApp: `https://wa.me/34630550136` (+34 630 55 01 36). El número solo se muestra en la página de contacto; en el resto, enlaces que abren WhatsApp. Usa siempre `src/lib/constants.ts`.
 - Instagram: `@puntadasbcn` → `https://www.instagram.com/puntadasbcn/` (cualquier otro handle en el código es un error).

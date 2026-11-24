@@ -54,10 +54,10 @@ export default function ContactoPage() {
             <h2 id="canales-title" className="sr-only">
               Formas de contacto
             </h2>
-            <dl className="border-t border-line">
+            <dl>
               {channels.map((channel) => (
-                <div key={channel.term} className="border-b border-line py-6" data-reveal>
-                  <dt className="label text-muted">{channel.term}</dt>
+                <div key={channel.term} className="py-5" data-reveal>
+                  <dt className="text-small text-muted">{channel.term}</dt>
                   <dd className="mt-3">
                     {channel.href ? (
                       <a
@@ -92,11 +92,11 @@ export default function ContactoPage() {
             <h2 id="proceso-title" className="text-head" data-reveal>
               Cómo es el proceso
             </h2>
-            <ol className="mt-10 border-t border-line">
+            <ol className="mt-10">
               {steps.map((step, i) => (
                 <li
                   key={step.name}
-                  className="border-b border-line py-6"
+                  className="py-5"
                   data-reveal
                   style={{ '--delay': `${i * 80}ms` } as React.CSSProperties}
                 >

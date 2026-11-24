@@ -12,20 +12,20 @@ interface AccordionProps {
   defaultOpen?: number | null;
 }
 
-// Lista desplegable con líneas finísimas: una pregunta abierta cada vez
+// Lista desplegable sobre paneles de piedra (sin líneas): una pregunta abierta cada vez
 export default function Accordion({ items, defaultOpen = null }: AccordionProps) {
   const [open, setOpen] = useState<number | null>(defaultOpen);
   const baseId = useId();
 
   return (
-    <div className="border-t border-line">
+    <div className="space-y-2">
       {items.map((item, index) => {
         const isOpen = open === index;
         const panelId = `${baseId}-panel-${index}`;
         const buttonId = `${baseId}-button-${index}`;
 
         return (
-          <div key={item.title} className="border-b border-line">
+          <div key={item.title} className="bg-stone px-5 md:px-6">
             <h3 className="font-sans">
               <button
                 id={buttonId}

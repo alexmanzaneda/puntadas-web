@@ -19,12 +19,12 @@ export default async function CategoryPage({ category, title, subtitle, banner }
   return (
     <>
       <main>
-        <header className="px-gutter pb-12 pt-10 text-center md:pb-16 md:pt-16">
+        <header className="px-gutter pb-6 pt-8 text-center md:pb-8 md:pt-12">
           <h1 className="text-head" data-reveal style={{ '--delay': '80ms' } as React.CSSProperties}>
             {title}
           </h1>
           <p
-            className="mx-auto mt-5 max-w-[48ch] text-body"
+            className="mx-auto mt-3 max-w-[40ch] text-small md:text-body"
             data-reveal
             style={{ '--delay': '160ms' } as React.CSSProperties}
           >

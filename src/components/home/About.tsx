@@ -21,7 +21,7 @@ export default function About() {
             Cosido en casa, punto a punto
           </h2>
 
-          <div className="mt-10 space-y-8 border-t border-line pt-8">
+          <div className="mt-12 space-y-8">
             <div data-reveal style={{ '--delay': '160ms' } as React.CSSProperties}>
               <h3 className="text-lead">Desde la tela</h3>
               <p className="mt-3 max-w-[44ch] text-body">

@@ -36,13 +36,13 @@ export default function ProductCard({
             className="img-zoom object-cover"
           />
         </div>
-        {!product.inStock && <span className="label absolute left-3 top-3 bg-paper px-2 py-1">Agotado</span>}
+        {!product.inStock && <span className="text-small absolute left-3 top-3 bg-paper px-2 py-1">Agotado</span>}
       </div>
       <div className="mt-4">
         <h3 className="font-display text-lead">
           <span className="link-line">{product.name}</span>
         </h3>
-        {showCategory && <p className="label mt-1.5 text-muted">{categoryLabel}</p>}
+        {showCategory && <p className="mt-1 text-small text-muted">{categoryLabel}</p>}
       </div>
     </Link>
   );

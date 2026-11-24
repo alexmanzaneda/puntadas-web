@@ -56,7 +56,7 @@ export default function PersonalizePreview() {
           </p>
 
           <div className="mt-10" data-reveal style={{ '--delay': '240ms' } as React.CSSProperties}>
-            <label htmlFor={inputId} className="label block">
+            <label htmlFor={inputId} className="block text-small">
               El nombre
             </label>
             <input
